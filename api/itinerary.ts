@@ -28,7 +28,19 @@ import {
 } from './_lib/pricing.js'
 
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions'
-const DEFAULT_MODEL = 'llama-3.3-70b-versatile'
+/**
+ * Models are tried in order.
+ *
+ * Groq retires models without much notice: llama-3.3-70b-versatile worked in
+ * the morning and returned model_not_found by the evening, taking the whole
+ * feature down. A chain means one retirement degrades quality for a request
+ * instead of breaking the page. GROQ_MODEL, if set, is tried first.
+ */
+const MODEL_CHAIN = [
+  'openai/gpt-oss-120b',
+  'openai/gpt-oss-20b',
+  'groq/compound',
+]
 const TEAM_EMAIL = process.env.TEAM_EMAIL || 'shubhamtourtravels7@gmail.com'
 const PHONE = '+91 85958 20300'
 const PUBLIC_EMAIL = 'contact@shubhamtourtravels.in'
@@ -77,15 +89,12 @@ MEASURED ROAD DATA (authoritative, do not contradict):
 Return exactly ${b.days} entries in "days".`
 }
 
-async function callGroq(body: any, leg: any) {
-  const key = process.env.GROQ_API_KEY
-  if (!key) throw new Error('GROQ_API_KEY is not configured on the server.')
-
+async function askModel(model: string, key: string, body: any, leg: any) {
   const res = await fetch(GROQ_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
     body: JSON.stringify({
-      model: process.env.GROQ_MODEL || DEFAULT_MODEL,
+      model,
       temperature: 0.6,
       max_tokens: 2600,
       response_format: { type: 'json_object' },
@@ -96,19 +105,39 @@ async function callGroq(body: any, leg: any) {
     }),
   })
 
-  if (!res.ok) {
-    throw new Error(`Groq error ${res.status}: ${(await res.text()).slice(0, 200)}`)
-  }
+  if (!res.ok) throw new Error(`Groq ${res.status}: ${(await res.text()).slice(0, 160)}`)
 
   const data: any = await res.json()
   const raw = data?.choices?.[0]?.message?.content
-  if (!raw) throw new Error('Groq returned an empty completion.')
+  if (!raw) throw new Error('empty completion')
 
-  let plan: any
-  try { plan = JSON.parse(raw) } catch { throw new Error('Groq returned malformed JSON.') }
+  const plan = JSON.parse(raw)           // throws on malformed JSON, caught by the chain
+  if (!Array.isArray(plan.days) || !plan.days.length) throw new Error('no days returned')
+  return plan
+}
 
-  const days = Array.isArray(plan.days) ? plan.days : []
-  if (!days.length) throw new Error('Groq returned no days.')
+async function callGroq(body: any, leg: any) {
+  const key = process.env.GROQ_API_KEY
+  if (!key) throw new Error('GROQ_API_KEY is not configured on the server.')
+
+  const chain = [process.env.GROQ_MODEL, ...MODEL_CHAIN].filter(Boolean) as string[]
+  const failures: string[] = []
+  let plan: any = null
+
+  for (const model of chain) {
+    try {
+      plan = await askModel(model, key, body, leg)
+      break
+    } catch (err: any) {
+      failures.push(`${model}: ${err?.message || 'failed'}`)
+    }
+  }
+
+  if (!plan) {
+    throw new Error(`Could not generate an itinerary. ${failures.join(' | ').slice(0, 300)}`)
+  }
+
+  const days = plan.days
 
   return {
     title: String(plan.title || `${body.days} Days in ${body.to}`),

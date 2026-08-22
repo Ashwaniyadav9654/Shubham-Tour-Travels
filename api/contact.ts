@@ -9,7 +9,7 @@
 
 import { sendMail, mailConfigured } from './_lib/mail.js'
 
-const TEAM_EMAIL = process.env.TEAM_EMAIL || 'shubhamtourandtravels9@gmail.com'
+const TEAM_EMAIL = process.env.TEAM_EMAIL || 'shubhamtourtravels7@gmail.com'
 const PHONE = '+91 85958 20300'
 
 export default async function handler(req: any, res: any) {

@@ -29,7 +29,7 @@ import {
 
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions'
 const DEFAULT_MODEL = 'llama-3.3-70b-versatile'
-const TEAM_EMAIL = process.env.TEAM_EMAIL || 'shubhamtourandtravels9@gmail.com'
+const TEAM_EMAIL = process.env.TEAM_EMAIL || 'shubhamtourtravels7@gmail.com'
 const PHONE = '+91 85958 20300'
 const PUBLIC_EMAIL = 'contact@shubhamtourtravels.in'
 

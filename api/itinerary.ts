@@ -17,15 +17,15 @@
  *      RESEND_API_KEY or SMTP_*, MAIL_FROM, TEAM_EMAIL
  */
 
-import { drivingDistance } from './_lib/route'
-import { buildItineraryPdf } from './_lib/pdf'
-import { sendMail, mailConfigured } from './_lib/mail'
+import { drivingDistance } from './_lib/route.js'
+import { buildItineraryPdf } from './_lib/pdf.js'
+import { sendMail, mailConfigured } from './_lib/mail.js'
 import {
   quoteAll,
   daysBetween,
   MIN_KM_PER_DAY,
   ADVANCE_PERCENT,
-} from '../src/lib/pricing'
+} from './_lib/pricing.js'
 
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions'
 const DEFAULT_MODEL = 'llama-3.3-70b-versatile'

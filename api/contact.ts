@@ -7,7 +7,7 @@
  * separate template per recipient.
  */
 
-import { sendMail, mailConfigured } from './_lib/mail'
+import { sendMail, mailConfigured } from './_lib/mail.js'
 
 const TEAM_EMAIL = process.env.TEAM_EMAIL || 'shubhamtourandtravels9@gmail.com'
 const PHONE = '+91 85958 20300'

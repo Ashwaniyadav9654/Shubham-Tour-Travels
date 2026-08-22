@@ -48,7 +48,7 @@ export default function WeddingPage() {
               <em className="text-gold-gradient not-italic">Unforgettable</em>
             </h1>
             <p className="text-obsidian-400 max-w-xl text-lg mb-8">
-              From Baraat to Bidaai — complete wedding convoy management with decorated vehicles, professional chauffeurs, and flawless coordination.
+              From Baraat to Bidaai. Complete wedding convoy management with decorated vehicles, professional chauffeurs, and flawless coordination.
             </p>
             <a href={whatsappBookingLink('Wedding Transportation')} target="_blank" rel="noopener noreferrer"
               className="btn-gold text-xs">Plan Your Wedding Convoy</a>
@@ -72,10 +72,10 @@ export default function WeddingPage() {
             {[
               { title: 'Decorated Vehicles', desc: 'Stunning floral and ribbon decorations matching your wedding theme and colour palette.' },
               { title: 'Full Convoy Management', desc: 'We coordinate every vehicle, every timing, so you don\'t have to think about logistics.' },
-              { title: 'Baraat Specialists', desc: 'From the first dhol beat to the last toast — our baraat experience is legendary.' },
+              { title: 'Baraat Specialists', desc: 'From the first dhol beat to the last toast, our baraat experience is legendary.' },
               { title: 'Guest Shuttles', desc: 'Comfortable Tempo Travellers shuttling guests between venue, hotel, and airport.' },
               { title: 'VIP Guest Transfers', desc: 'Premium Innova Crystas and sedans for your most important guests.' },
-              { title: 'Punctuality Guaranteed', desc: 'Weddings run on timing. We are never late — period.' },
+              { title: 'Punctuality Guaranteed', desc: 'Weddings run on timing. We are never late. Period.' },
             ].map((item, i) => (
               <motion.div key={item.title}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}

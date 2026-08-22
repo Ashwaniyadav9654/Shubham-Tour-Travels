@@ -178,7 +178,7 @@ export default function AdminPage() {
             <p className="text-obsidian-500 text-sm">
               {activeTab === 'Bookings'
                 ? 'Connect to your backend API to manage bookings in real-time.'
-                : 'Backend configuration — connect your MongoDB & Node.js API.'}
+                : 'Backend configuration. Connect your MongoDB & Node.js API.'}
             </p>
           </div>
         )}

@@ -1,24 +1,37 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useRef } from 'react'
 import { stats } from '@/data'
+import { useCounter, useScrollReveal, useSpotlight } from '@/hooks/useGsapAnimations'
 
 export default function StatsSection() {
+  const ref = useRef<HTMLDivElement>(null)
+
+  // Counts each value up from zero, preserving its prefix/suffix
+  useCounter(ref)
+  useScrollReveal(ref, { y: 44, scale: 1, stagger: 0.08, start: 'top 88%' })
+  useSpotlight(ref)
+
   return (
-    <section className="bg-obsidian-950 border-y border-gold-500/10">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gold-500/10">
-          {stats.map((stat, i) => (
-            <motion.div
+    <section className="bg-ink border-b border-hairline">
+      <div className="shell">
+        <div
+          ref={ref}
+          className="grid grid-cols-2 lg:grid-cols-4 border-l border-hairline"
+        >
+          {stats.map((stat) => (
+            <div
               key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="py-12 px-8 text-center"
+              data-reveal
+              className="spotlight group border-r border-b lg:border-b-0 border-hairline px-6 md:px-10 py-14 md:py-20"
             >
-              <div className="font-display text-4xl md:text-5xl text-gold-400 mb-2">{stat.value}</div>
-              <div className="text-obsidian-500 text-xs tracking-widest uppercase">{stat.label}</div>
-            </motion.div>
+              <span className="hue-sweep" />
+              <div
+                data-counter
+                className="display-md text-bone mb-4 tabular-nums"
+              >
+                {stat.value}
+              </div>
+              <div className="eyebrow text-[10px] text-obsidian-500">{stat.label}</div>
+            </div>
           ))}
         </div>
       </div>

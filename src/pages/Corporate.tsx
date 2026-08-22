@@ -26,7 +26,7 @@ const serviceCards = [
   {
     icon: MapPin,
     title: 'Corporate Group Tours',
-    desc: 'Team outings, offsites, and retreats — our Maharaja Tempo Traveller handles groups in premium comfort.',
+    desc: 'Team outings, offsites, and retreats. Our Maharaja Tempo Traveller handles groups in premium comfort.',
   },
   {
     icon: Plane,
@@ -36,7 +36,7 @@ const serviceCards = [
   {
     icon: Briefcase,
     title: 'Event Transportation',
-    desc: 'Conferences, seminars, product launches — we coordinate multi-vehicle fleets for seamless event logistics.',
+    desc: 'Conferences, seminars, product launches. We coordinate multi-vehicle fleets for seamless event logistics.',
   },
   {
     icon: Heart,
@@ -46,7 +46,7 @@ const serviceCards = [
   {
     icon: Car,
     title: 'Outstation Corporate Travel',
-    desc: 'Client visits, site inspections, or multi-city tours — our outstation service covers all of India from Delhi NCR.',
+    desc: 'Client visits, site inspections, or multi-city tours. Our outstation service covers all of India from Delhi NCR.',
   },
 ]
 
@@ -142,9 +142,9 @@ export default function CorporatePage() {
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <div className="grid grid-cols-1 gap-5">
                 {[
-                  { icon: Users, title: 'Employee Transport', desc: 'Daily pickup & drop for your team — scheduled, reliable, comfortable.' },
+                  { icon: Users, title: 'Employee Transport', desc: 'Daily pickup & drop for your team: scheduled, reliable and comfortable.' },
                   { icon: Receipt, title: 'GST-Compliant Billing', desc: 'Monthly invoices, GST-compliant, with per-trip breakdowns for your accounts team. Perfect for business expense management.' },
-                  { icon: Headphones, title: 'Dedicated Travel Support', desc: 'Your own travel desk — a dedicated point of contact for all bookings, changes, and escalations.' },
+                  { icon: Headphones, title: 'Dedicated Travel Support', desc: 'Your own travel desk, a dedicated point of contact for all bookings, changes, and escalations.' },
                 ].map((item) => (
                   <div key={item.title} className="flex gap-5 p-6 bg-white border border-obsidian-100">
                     <div className="w-10 h-10 border border-gold-500/30 flex items-center justify-center shrink-0">

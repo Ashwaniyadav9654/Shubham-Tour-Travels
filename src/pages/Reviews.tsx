@@ -18,18 +18,18 @@ export default function ReviewsPage() {
             <h1 className="font-display text-white text-5xl md:text-6xl mb-4">What Our Guests Say</h1>
             <div className="flex items-center gap-6 mt-6">
               <div className="text-center">
-                <div className="font-display text-gold-400 text-4xl">4.9</div>
+                <div className="font-display text-gold-400 text-4xl">4.7</div>
                 <div className="flex gap-0.5 my-1 justify-center">{[...Array(5)].map((_,i)=><Star key={i} size={13} fill="#c9922a" className="text-gold-500"/>)}</div>
                 <div className="text-obsidian-500 text-xs">Average Rating</div>
               </div>
               <div className="w-px h-12 bg-obsidian-800" />
               <div className="text-center">
-                <div className="font-display text-gold-400 text-4xl">5,000+</div>
+                <div className="font-display text-gold-400 text-4xl">700+</div>
                 <div className="text-obsidian-500 text-xs mt-1">Happy Travellers</div>
               </div>
               <div className="w-px h-12 bg-obsidian-800" />
               <div className="text-center">
-                <div className="font-display text-gold-400 text-4xl">12+</div>
+                <div className="font-display text-gold-400 text-4xl">15+</div>
                 <div className="text-obsidian-500 text-xs mt-1">Years of Trust</div>
               </div>
             </div>

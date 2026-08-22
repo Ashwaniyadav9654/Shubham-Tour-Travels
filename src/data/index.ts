@@ -211,7 +211,7 @@ export const tourPackages: TourPackage[] = [
     price: 54999,
     includes: ['Luxury Tempo Traveller', 'Driver & Fuel', 'Comfortable Group Travel'],
     highlights: ['Solang Valley', 'Rohtang Pass', 'Old Manali', 'Hadimba Temple', 'Beas River'],
-    image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1609920658906-8223bd289001?w=800&q=80',
     category: 'hill-station',
     popular: true,
     rating: 4.9,
@@ -239,7 +239,7 @@ export const tourPackages: TourPackage[] = [
     price: 21999,
     includes: ['Luxury Tempo Traveller', 'Driver & Fuel', 'Comfortable Group Travel'],
     highlights: ['Amber Fort', 'Hawa Mahal', 'City Palace', 'Jantar Mantar', 'Johari Bazaar'],
-    image: 'https://images.unsplash.com/photo-1477587458883-47145ed94b89?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?w=800&q=80',
     category: 'heritage',
     popular: true,
     rating: 4.8,
@@ -276,7 +276,7 @@ export const reviews: Review[] = [
     name: 'Priya Mehta',
     location: 'South Delhi',
     rating: 5,
-    comment: 'Used Shubham for our wedding convoy. 3 Innova Crystas and 1 Tempo Traveller — everything perfectly coordinated. The team went above and beyond. Highly recommend for wedding transportation!',
+    comment: 'Used Shubham for our wedding convoy. 3 Innova Crystas and 1 Tempo Traveller, everything perfectly coordinated. The team went above and beyond. Highly recommend for wedding transportation!',
     date: '2025-02-28',
     service: 'Wedding Transportation',
   },
@@ -303,7 +303,7 @@ export const reviews: Review[] = [
     name: 'Arun Kumar',
     location: 'Gurgaon',
     rating: 5,
-    comment: 'Booked the Shimla group tour for 12 people. Entire journey in the Maharaja Tempo Traveller was a pleasure — the ambient LED lighting, leather seats, and charging ports made it feel premium throughout.',
+    comment: 'Booked the Shimla group tour for 12 people. Entire journey in the Maharaja Tempo Traveller was a pleasure: the ambient LED lighting, leather seats, and charging ports made it feel premium throughout.',
     date: '2025-01-18',
     service: 'Shimla Group Tour',
   },
@@ -312,7 +312,7 @@ export const reviews: Review[] = [
     name: 'Deepika Nair',
     location: 'Delhi',
     rating: 5,
-    comment: 'Office team outing to Rishikesh — 14 people. Flawless execution, very competitive pricing at ₹30/km. GST invoice was provided promptly. Will definitely use again.',
+    comment: 'Office team outing to Rishikesh with 14 people. Flawless execution, very competitive pricing at ₹30/km. GST invoice was provided promptly. Will definitely use again.',
     date: '2025-03-05',
     service: 'Group Tour – Rishikesh',
   },
@@ -358,11 +358,25 @@ export const blogPosts: BlogPost[] = [
 ]
 
 export const stats = [
-  { value: '12+', label: 'Years of Excellence' },
-  { value: '5000+', label: 'Group Trips Done' },
-  { value: '50,000+', label: 'Happy Travellers' },
-  { value: '4.9★', label: 'Average Rating' },
+  { value: '15+', label: 'Years of Experience' },
+  { value: '50+', label: 'Group Trips Done' },
+  { value: '700+', label: 'Happy Travellers' },
+  { value: '4.7★', label: 'Average Rating' },
 ]
+
+/** Headline rating, shown in the hero badge and the reviews header. */
+export const ratingSummary = {
+  score: 4.7,
+  outOf: 5,
+  travellers: '700+',
+  years: '15+',
+  trips: '50+',
+}
+
+/** Booking terms surfaced across the site. */
+export const bookingTerms = {
+  advancePercent: 10,
+}
 
 export const services = [
   {
@@ -376,7 +390,7 @@ export const services = [
   {
     id: 'ac-bus',
     title: '40 Seater AC Bus',
-    description: 'For large groups — school trips, corporate events, pilgrimages. Full AC, comfortable seating for 40 passengers.',
+    description: 'For large groups: school trips, corporate events and pilgrimages. Full AC, comfortable seating for 40 passengers.',
     icon: 'Bus',
     href: '/fleet',
     color: '#c9922a',
@@ -384,7 +398,7 @@ export const services = [
   {
     id: 'innova',
     title: 'Innova Crysta',
-    description: "The executive's choice. Spacious, powerful, elegant — the Innova Crysta is the benchmark of premium cab service.",
+    description: "The executive's choice. Spacious, powerful and elegant. The Innova Crysta is the benchmark of premium cab service.",
     icon: 'Car',
     href: '/fleet/innova',
     color: '#c9922a',
@@ -392,7 +406,7 @@ export const services = [
   {
     id: 'airport',
     title: 'Airport Transfer',
-    description: 'Punctual, professional, pristine. Your stress-free transfer from any Delhi NCR airport — 24/7.',
+    description: 'Punctual, professional, pristine. Your stress-free transfer from any Delhi NCR airport, 24/7.',
     icon: 'Plane',
     href: '/airport-transfer',
     color: '#c9922a',

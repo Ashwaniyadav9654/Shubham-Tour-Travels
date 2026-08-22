@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://tourarty-main-6y4hn0ymh-ashwani-kumars-projects-9c7fa6ee.vercel.app/sitemap.xml
+Disallow: /admin
+Disallow: /login
+Disallow: /api/
+
+Sitemap: https://shubhamtourtravels.in/sitemap.xml

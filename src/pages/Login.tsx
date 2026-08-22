@@ -44,7 +44,7 @@ export default function LoginPage() {
           </div>
           <div>
             <div className="text-white font-display font-semibold">Shubham Tour & Travels</div>
-            <div className="text-gold-600 text-[10px] tracking-widest uppercase">Est. 2012</div>
+            <div className="text-gold-600 text-[10px] tracking-widest uppercase">15+ Years</div>
           </div>
         </Link>
 

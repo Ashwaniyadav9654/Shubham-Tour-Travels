@@ -2,33 +2,41 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, MessageCircle, Clock, CheckCircle, AlertCircle } from 'lucide-react'
 import { whatsappLink, PHONE_NUMBER, PHONE_HREF, EMAIL } from '@/lib/utils'
-import { sendBookingEmail } from '@/lib/emailjs'
 
 type Status = 'idle' | 'sending' | 'success' | 'error'
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', phone: '', email: '', subject: '', message: '' })
   const [status, setStatus] = useState<Status>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
 
   const update = (k: string, v: string) => setForm(prev => ({ ...prev, [k]: v }))
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('sending')
-    const result = await sendBookingEmail({
-      customer_name: form.name,
-      customer_phone: form.phone,
-      customer_email: form.email,
-      pickup_location: 'N/A',
-      destination: 'N/A',
-      travel_date: 'N/A',
-      subject: form.subject || 'Contact Form Enquiry',
-      message: form.message,
-    })
-    if (result.success) {
-      setStatus('success')
-      setForm({ name: '', phone: '', email: '', subject: '', message: '' })
-    } else {
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          phone: form.phone,
+          email: form.email,
+          subject: form.subject || 'Contact Form Enquiry',
+          message: form.message,
+        }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (res.ok && data?.ok) {
+        setStatus('success')
+        setForm({ name: '', phone: '', email: '', subject: '', message: '' })
+      } else {
+        setErrorMsg(data?.error || '')
+        setStatus('error')
+      }
+    } catch {
+      setErrorMsg('')
       setStatus('error')
     }
   }
@@ -44,7 +52,7 @@ export default function ContactPage() {
             </div>
             <h1 className="font-display text-white text-5xl md:text-6xl mb-4">Contact Us</h1>
             <p className="text-obsidian-400 max-w-lg">
-              Available 24 hours, 7 days a week. Call, WhatsApp, or fill the form — we respond within minutes.
+              Available 24 hours, 7 days a week. Call, WhatsApp, or fill the form and we respond within minutes.
             </p>
           </motion.div>
         </div>
@@ -98,7 +106,7 @@ export default function ContactPage() {
                 <MessageCircle size={22} />
                 <div>
                   <div className="font-semibold text-sm">WhatsApp Us Now</div>
-                  <div className="text-green-100 text-xs">Fastest response — usually under 5 min</div>
+                  <div className="text-green-100 text-xs">Fastest response, usually under 5 min</div>
                 </div>
               </motion.a>
             </div>
@@ -121,8 +129,8 @@ export default function ContactPage() {
 
                   {status === 'error' && (
                     <div className="flex items-center gap-3 p-4 bg-red-50 border border-red-200 text-red-700 text-sm mb-6">
-                      <AlertCircle size={16} />
-                      Failed to send email. Please try WhatsApp or call us directly.
+                      <AlertCircle size={16} className="shrink-0" />
+                      {errorMsg || 'We could not send your message. Please try WhatsApp or call us directly.'}
                     </div>
                   )}
 

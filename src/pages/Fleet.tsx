@@ -34,7 +34,7 @@ export default function FleetPage() {
             </div>
             <h1 className="font-display text-white text-5xl md:text-6xl mb-4">Vehicles That Define Luxury</h1>
             <p className="text-obsidian-400 max-w-xl">
-              From Maharaja Travellers to AC buses and executive sedans — every vehicle is meticulously maintained, GPS tracked, and driven by trained professionals.
+              From Maharaja Travellers to AC buses and executive sedans. Every vehicle is meticulously maintained, GPS tracked, and driven by trained professionals.
             </p>
           </motion.div>
         </div>

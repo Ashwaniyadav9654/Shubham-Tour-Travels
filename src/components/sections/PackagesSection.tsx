@@ -1,82 +1,134 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { Clock, Star, ArrowRight } from 'lucide-react'
+import { ArrowUpRight, Clock, MapPin, Star } from 'lucide-react'
 import { tourPackages } from '@/data'
 import { formatCurrency, whatsappBookingLink } from '@/lib/utils'
+import Magnetic from '@/components/animations/Magnetic'
+import {
+  useHeaderReveal,
+  useScrollReveal,
+  useClipReveal,
+  useCardHover,
+  useSpotlight,
+} from '@/hooks/useGsapAnimations'
 
 export default function PackagesSection() {
   const featured = tourPackages.filter(p => p.popular).slice(0, 3)
 
+  const headerRef = useRef<HTMLDivElement>(null)
+  const gridRef = useRef<HTMLDivElement>(null)
+
+  useHeaderReveal(headerRef)
+  useScrollReveal(gridRef, { y: 56, scale: 0.98, stagger: 0.1, start: 'top 86%' })
+  useClipReveal(gridRef, { start: 'top 84%', stagger: 0.1 })
+  useCardHover(gridRef, { lift: -10, scale: 1, glow: 'rgba(11,11,12,0.18)', glowSize: 80 })
+  useSpotlight(gridRef)
+
   return (
-    <section className="section-pad bg-parchment">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6"
+    <section className="section-pad bg-bone">
+      <div className="shell">
+
+        {/* ── Header ─────────────────────────────────────────────── */}
+        <div
+          ref={headerRef}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-y-10 gap-x-8 items-end mb-14 md:mb-20"
         >
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="h-px w-10 bg-gold-500" />
-              <span className="text-gold-600 text-xs tracking-[0.25em] uppercase">Curated Packages</span>
+          <div className="lg:col-span-7">
+            <div className="flex items-center gap-5 mb-7">
+              <span className="eyebrow text-gold-600">Curated Journeys</span>
+              <span className="h-px w-16 bg-obsidian-950/15" />
+              <span className="eyebrow text-obsidian-400">
+                {String(featured.length).padStart(2, '0')} Featured
+              </span>
             </div>
-            <h2 className="font-display text-obsidian-950 text-4xl md:text-5xl leading-tight">
-              India's Most Beloved<br />Travel Experiences
+            <h2 className="display-lg text-obsidian-950">
+              India&rsquo;s most beloved<br />
+              <em className="text-obsidian-400" style={{ fontStyle: 'italic' }}>travel experiences.</em>
             </h2>
           </div>
-          <Link to="/tours" className="btn-luxury text-xs self-start">
-            All Packages <ArrowRight size={13} />
-          </Link>
-        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="lg:col-span-4 lg:col-start-9 lg:flex lg:justify-end lg:pb-2">
+            <Magnetic strength={0.3}>
+              <Link to="/tours" className="btn-luxury text-obsidian-950">
+                All Packages <ArrowUpRight size={13} />
+              </Link>
+            </Magnetic>
+          </div>
+        </div>
+
+        {/* ── Even three-up grid ─────────────────────────────────────
+            Equal columns, one gap value, every card the same internal
+            rhythm — `items-stretch` + `h-full` so the CTA rows line up
+            across cards no matter how long the titles run. */}
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-8 items-stretch"
+        >
           {featured.map((pkg, i) => (
-            <motion.div
+            <article
               key={pkg.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.12, duration: 0.5 }}
-              className="group bg-white hover-lift border border-obsidian-100 overflow-hidden"
+              data-reveal
+              data-hover-card
+              className="spotlight group h-full flex flex-col bg-white border border-obsidian-950/10 hover:border-gold-500/45 transition-paint"
             >
-              <div className="relative h-56 overflow-hidden cinematic-overlay">
+              <span className="hue-sweep" />
+
+              {/* Media */}
+              <div data-clip className="media-frame relative aspect-[4/3] w-full bg-obsidian-100 shrink-0">
                 <img
                   src={pkg.image}
                   alt={pkg.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform group-hover:scale-[1.06]"
+                  style={{
+                    transitionDuration: '1200ms',
+                    transitionTimingFunction: 'cubic-bezier(0.22,1,0.36,1)',
+                    filter: 'saturate(1.12)',
+                  }}
                 />
-                <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
-                  <div className="flex items-center gap-2 text-white/80 text-xs mb-1">
-                    <Clock size={11} />
-                    {pkg.duration}
-                    <span className="ml-auto flex items-center gap-1 text-gold-300">
-                      <Star size={11} fill="currentColor" />
-                      {pkg.rating}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-white text-xl leading-tight">{pkg.title}</h3>
-                </div>
+                <span className="absolute top-5 left-5 eyebrow text-[9px] text-bone bg-ink/70 backdrop-blur-md px-3 py-2">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span className="absolute top-5 right-5 flex items-center gap-1.5 eyebrow text-[9px] text-brass bg-ink/70 backdrop-blur-md px-3 py-2">
+                  <Star size={9} fill="currentColor" strokeWidth={0} />
+                  {pkg.rating}
+                </span>
               </div>
 
-              <div className="p-6">
-                <p className="text-obsidian-500 text-xs mb-4">{pkg.destination}</p>
+              {/* Body — one consistent padding scale throughout */}
+              <div className="flex flex-col flex-1 p-7 lg:p-8">
 
-                <div className="flex flex-wrap gap-1.5 mb-5">
+                <div className="flex items-center gap-5 text-obsidian-500 text-[12px] mb-5">
+                  <span className="flex items-center gap-1.5">
+                    <Clock size={11} strokeWidth={1.5} />
+                    {pkg.duration}
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <MapPin size={11} strokeWidth={1.5} />
+                    {pkg.destination}
+                  </span>
+                </div>
+
+                <h3 className="font-display text-obsidian-950 text-[1.65rem] leading-[1.08] tracking-tighter mb-5">
+                  {pkg.title}
+                </h3>
+
+                <div className="flex flex-wrap gap-2 mb-7">
                   {pkg.highlights.slice(0, 3).map((h) => (
-                    <span key={h} className="text-[10px] px-2.5 py-1 bg-cream text-obsidian-500 border border-obsidian-100">
+                    <span
+                      key={h}
+                      className="text-[11px] px-3 py-1.5 bg-bone text-obsidian-500 border border-obsidian-950/8"
+                    >
                       {h}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-obsidian-100">
+                {/* Price + CTA pinned to the bottom of every card */}
+                <div className="mt-auto pt-6 border-t border-obsidian-950/10 flex items-end justify-between gap-4">
                   <div>
-                    {pkg.originalPrice && (
-                      <div className="text-obsidian-400 text-xs line-through">{formatCurrency(pkg.originalPrice)}</div>
-                    )}
-                    <div className="text-obsidian-950 font-bold text-xl font-display">
+                    <div className="eyebrow text-[9px] text-obsidian-400 mb-2">From</div>
+                    <div className="font-display text-obsidian-950 text-[1.6rem] tracking-tighter leading-none">
                       {formatCurrency(pkg.price)}
                     </div>
                   </div>
@@ -84,14 +136,24 @@ export default function PackagesSection() {
                     href={whatsappBookingLink(pkg.title, pkg.destination)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-gold text-xs py-2.5 px-5"
+                    className="btn-luxury text-obsidian-950 text-[10px] py-3 px-6 shrink-0"
                   >
                     Enquire
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </article>
           ))}
+        </div>
+
+        {/* ── Booking note ───────────────────────────────────────── */}
+        <div className="mt-14 md:mt-16 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 pt-10 border-t border-obsidian-950/10">
+          <span className="eyebrow text-[10px] text-obsidian-500">
+            Only <span className="text-gold-600">10% advance</span> to confirm
+          </span>
+          <span className="eyebrow text-[10px] text-obsidian-500">GST billing available</span>
+          <span className="eyebrow text-[10px] text-obsidian-500">GPS tracked fleet</span>
+          <span className="eyebrow text-[10px] text-obsidian-500">24 / 7 support</span>
         </div>
       </div>
     </section>

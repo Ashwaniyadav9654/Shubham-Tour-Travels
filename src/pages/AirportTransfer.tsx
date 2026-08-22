@@ -93,7 +93,7 @@ export default function AirportTransferPage() {
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <div className="grid grid-cols-1 gap-5">
                 {[
-                  { icon: Clock, title: '24/7 Availability', desc: 'Early morning departures, late night arrivals — we are always ready.' },
+                  { icon: Clock, title: '24/7 Availability', desc: 'Early morning departures, late night arrivals, we are always ready.' },
                   { icon: Shield, title: 'Fixed Fare Guarantee', desc: 'The price you see is the price you pay. No surge, no surprises.' },
                   { icon: Star, title: 'Professional Chauffeurs', desc: 'Uniformed, trained, background-verified drivers who know every route.' },
                   { icon: Plane, title: 'Flight Monitoring', desc: 'We track your flight in real-time and adjust pickup timing automatically.' },

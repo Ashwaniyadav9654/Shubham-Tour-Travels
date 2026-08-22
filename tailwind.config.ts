@@ -12,33 +12,63 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        /* ──────────────────────────────────────────────────────────
+           REDESIGN 2026 — deep charcoal / off-white / single brass accent.
+           Token NAMES are deliberately unchanged so every page that was
+           not individually rewritten still inherits the new aesthetic.
+           ────────────────────────────────────────────────────────── */
+
+        /* Brass — one restrained accent. Desaturated from the old gold;
+           used for hairlines, eyebrows and small marks, never as fill. */
         gold: {
-          50:  '#fdf9ee',
-          100: '#f9f0cf',
-          200: '#f2dc9a',
-          300: '#e9c565',
-          400: '#e2b040',
-          500: '#c9922a',
-          600: '#b07220',
-          700: '#8f571d',
-          800: '#76451e',
-          900: '#633a1d',
+          50:  '#faf8f3',
+          100: '#f0ebdf',
+          200: '#ded2b8',
+          300: '#cdb994',
+          400: '#c0a172',
+          500: '#a98a5c',
+          600: '#8c7049',
+          700: '#6e573a',
+          800: '#52412c',
+          900: '#382d1f',
         },
+
+        /* Charcoal ramp — 950 is the page black, 50 the off-white. */
         obsidian: {
-          50:  '#f5f5f5',
-          100: '#e8e8e8',
-          200: '#d1d1d1',
-          300: '#b0b0b0',
-          400: '#888888',
-          500: '#6d6d6d',
-          600: '#5c5c5c',
-          700: '#4e4e4e',
-          800: '#444444',
-          900: '#3d3d3d',
-          950: '#0a0a0a',
+          50:  '#f5f3ee',
+          100: '#e8e5dd',
+          200: '#d0ccc3',
+          300: '#aeaaa1',
+          400: '#8b8780',
+          500: '#6a6762',
+          600: '#4d4b47',
+          700: '#343330',
+          800: '#232322',
+          900: '#161617',
+          950: '#0b0b0c',
         },
-        cream: '#f5f0e8',
-        parchment: '#ede8df',
+
+        cream: '#f5f3ee',
+        parchment: '#ebe8e1',
+
+        /* Jewel-tone accents — see src/lib/palette.ts. Used for per-card
+           identity, glows and animated gradients. */
+        hue: {
+          saffron: '#f5a524',
+          peacock: '#12b5ac',
+          indigo: '#7c6bf5',
+          rose: '#f2547d',
+          emerald: '#34d399',
+          ember: '#ff7043',
+        },
+
+        /* Named surfaces for the redesigned sections */
+        ink: '#0b0b0c',
+        carbon: '#121214',
+        graphite: '#18181b',
+        hairline: '#26262a',
+        bone: '#f5f3ee',
+        brass: '#c0a172',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -74,14 +104,22 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ['Playfair Display', 'Georgia', 'serif'],
+        /* Fraunces — variable, high-contrast editorial serif. Replaces
+           Playfair Display everywhere `font-display` is already used. */
+        display: ['Fraunces', 'Playfair Display', 'Georgia', 'serif'],
         body: ['DM Sans', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        mono: ['DM Sans', 'ui-monospace', 'monospace'],
+      },
+      letterSpacing: {
+        tightest: '-0.055em',
+        tighter: '-0.035em',
       },
       backgroundImage: {
-        'gold-gradient': 'linear-gradient(135deg, #c9922a 0%, #e9c565 50%, #c9922a 100%)',
-        'dark-gradient': 'linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%)',
-        'hero-overlay': 'linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.8) 100%)',
+        /* Gradients removed from the design language — these remain as flat
+           colours so any page still referencing them stays coherent. */
+        'gold-gradient': 'none',
+        'dark-gradient': 'none',
+        'hero-overlay': 'none',
       },
       animation: {
         'fade-up': 'fadeUp 0.6s ease-out forwards',
@@ -124,6 +162,12 @@ const config: Config = {
       },
       transitionTimingFunction: {
         'luxury': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        'expo': 'cubic-bezier(0.65, 0, 0.35, 1)',
+      },
+      transitionDuration: {
+        '400': '400ms',
+        '600': '600ms',
+        '800': '800ms',
       },
     },
   },

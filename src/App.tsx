@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Toaster } from 'sonner'
 import { AuthProvider } from '@/context/AuthContext'
 import Layout from '@/components/layout/Layout'
+import SmoothScroll from '@/components/animations/SmoothScroll'
+import RouteSeo from '@/components/layout/RouteSeo'
 
 // Pages
 import HomePage from '@/pages/Home'
@@ -26,6 +28,10 @@ export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
+        {/* Global Lenis smooth scroll + ScrollTrigger sync (renders nothing) */}
+        <SmoothScroll />
+        {/* Per-route <title>, description and canonical (renders nothing) */}
+        <RouteSeo />
         <Toaster
           position="top-right"
           toastOptions={{

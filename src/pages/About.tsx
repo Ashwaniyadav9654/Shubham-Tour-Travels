@@ -7,7 +7,7 @@ import CTASection from '@/components/sections/CTASection'
 const values = [
   { icon: Shield, title: 'Safety First', desc: 'Every vehicle is GPS tracked, regularly serviced, and driven by background-verified chauffeurs.' },
   { icon: Award, title: 'Uncompromising Quality', desc: 'We maintain our fleet to the highest standards. Clean interiors, reliable vehicles, professional drivers.' },
-  { icon: Clock, title: 'Punctuality Guaranteed', desc: 'We understand your time is precious. We are always on time — or we make it right.' },
+  { icon: Clock, title: 'Punctuality Guaranteed', desc: 'We understand your time is precious. We are always on time, or we make it right.' },
   { icon: Users, title: 'Customer First', desc: 'Your comfort and satisfaction are our only metrics. We go above and beyond, every single journey.' },
 ]
 
@@ -30,10 +30,10 @@ export default function AboutPage() {
                 Founded in 2012 in Gurgaon, Shubham Tour & Travels was born from a simple belief: travel should feel as extraordinary as the destination itself.
               </p>
               <p className="text-obsidian-400 leading-relaxed mb-6">
-                What began as a small fleet of Innova Crystas serving corporate clients has grown into one of Delhi NCR's most trusted luxury travel companies — with Maharaja Travellers, luxury Tempo Travellers, and a comprehensive fleet serving thousands of journeys every month.
+                What began as a small fleet of Innova Crystas serving corporate clients has grown into one of Delhi NCR's most trusted luxury travel companies, with Maharaja Travellers, luxury Tempo Travellers, and a comprehensive fleet serving thousands of journeys every month.
               </p>
               <p className="text-obsidian-400 leading-relaxed">
-                Today, we serve individual families, Fortune 500 companies, destination weddings, and pilgrimage groups — all with the same obsession: making every journey feel premium.
+                Today, we serve individual families, Fortune 500 companies, destination weddings, and pilgrimage groups, all with the same obsession: making every journey feel premium.
               </p>
             </motion.div>
 

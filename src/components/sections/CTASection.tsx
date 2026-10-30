@@ -5,9 +5,9 @@ import Magnetic from '@/components/animations/Magnetic'
 import { useHeadingReveal, useScrollReveal, useParallax, useSpotlight } from '@/hooks/useGsapAnimations'
 
 const terms = [
-  { value: '₹30', unit: '/km', label: 'Outstation' },
-  { value: '₹28', unit: '/km', label: 'Local NCR' },
-  { value: '250', unit: 'km', label: 'Min. per day' },
+  { value: '15', unit: '+', label: 'Years on the road' },
+  { value: 'GPS', unit: '', label: 'Tracked fleet' },
+  { value: '24', unit: '/7', label: 'Support' },
   { value: '10', unit: '%', label: 'Advance to confirm' },
 ]
 

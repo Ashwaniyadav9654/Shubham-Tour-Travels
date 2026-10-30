@@ -62,6 +62,15 @@ const config: Config = {
           ember: '#ff7043',
         },
 
+        /* Light travel theme (home, tours, navbar, footer): airy mist
+           background, deep navy type, one teal action colour, a warm sun
+           accent for small labels. */
+        navy: { DEFAULT: '#13263a', soft: '#3d5166', muted: '#6b7c8f' },
+        sea: { DEFAULT: '#1f8f84', dark: '#16736a', tint: '#e5f3f1' },
+        sun: '#dd9a2b',
+        mist: '#f6f8fa',
+        line: '#e2e8ee',
+
         /* Named surfaces for the redesigned sections */
         ink: '#0b0b0c',
         carbon: '#121214',

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { Toaster } from 'sonner'
 import { AuthProvider } from '@/context/AuthContext'
 import Layout from '@/components/layout/Layout'
@@ -11,11 +11,11 @@ import HomePage from '@/pages/Home'
 import FleetPage from '@/pages/Fleet'
 import FleetDetailPage from '@/pages/FleetDetail'
 import ToursPage from '@/pages/Tours'
+import PackageDetailPage from '@/pages/PackageDetail'
 import AirportTransferPage from '@/pages/AirportTransfer'
 import CorporatePage from '@/pages/Corporate'
 import WeddingPage from '@/pages/Wedding'
 import GalleryPage from '@/pages/Gallery'
-import ReviewsPage from '@/pages/Reviews'
 import BlogPage from '@/pages/Blog'
 import AboutPage from '@/pages/About'
 import ContactPage from '@/pages/Contact'
@@ -53,11 +53,12 @@ export default function App() {
             <Route path="/fleet" element={<FleetPage />} />
             <Route path="/fleet/:slug" element={<FleetDetailPage />} />
             <Route path="/tours" element={<ToursPage />} />
+            <Route path="/tours/:id" element={<PackageDetailPage />} />
             <Route path="/airport-transfer" element={<AirportTransferPage />} />
             <Route path="/corporate" element={<CorporatePage />} />
             <Route path="/wedding" element={<WeddingPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
-            <Route path="/reviews" element={<ReviewsPage />} />
+            <Route path="/reviews" element={<Navigate to="/" replace />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />

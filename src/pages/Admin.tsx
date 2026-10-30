@@ -1,18 +1,17 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Navigate } from 'react-router-dom'
-import { Car, Users, TrendingUp, MessageSquare, Settings, BarChart3, MapPin, Calendar } from 'lucide-react'
+import { Car, TrendingUp, MessageSquare, Settings, BarChart3, MapPin, Calendar } from 'lucide-react'
 import { useAuth } from '@/context/AuthContext'
-import { vehicles, reviews, tourPackages } from '@/data'
+import { vehicles, tourPackages } from '@/data'
 
 const stats = [
   { label: 'Total Fleet', value: vehicles.length, icon: Car, change: '+2 this month' },
-  { label: 'Total Reviews', value: '5,000+', icon: Users, change: '4.9 avg rating' },
   { label: 'Tour Packages', value: tourPackages.length, icon: MapPin, change: 'Active packages' },
   { label: 'Monthly Bookings', value: '320+', icon: TrendingUp, change: '+18% vs last month' },
 ]
 
-const tabs = ['Overview', 'Fleet', 'Bookings', 'Reviews', 'Settings']
+const tabs = ['Overview', 'Fleet', 'Bookings', 'Settings']
 
 export default function AdminPage() {
   const { isAdmin } = useAuth()
@@ -97,7 +96,7 @@ export default function AdminPage() {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-gold-400 text-sm">₹{v.pricePerKm}/km</div>
+                      <div className="text-gold-400 text-sm">{v.pricePerKm ? `₹${v.pricePerKm}/km` : 'Rate TBD'}</div>
                       <div className="text-green-400 text-[10px]">Active</div>
                     </div>
                   </div>
@@ -127,42 +126,13 @@ export default function AdminPage() {
                   </div>
                   <div className="flex items-center gap-6">
                     <div className="text-center hidden md:block">
-                      <div className="text-gold-400 text-sm">₹{v.pricePerKm}/km</div>
+                      <div className="text-gold-400 text-sm">{v.pricePerKm ? `₹${v.pricePerKm}/km` : 'TBD'}</div>
                       <div className="text-obsidian-500 text-xs">Rate</div>
-                    </div>
-                    <div className="text-center hidden md:block">
-                      <div className="text-white text-sm">{v.rating}★</div>
-                      <div className="text-obsidian-500 text-xs">{v.reviews} reviews</div>
                     </div>
                     <div className="flex gap-2">
                       <button className="text-xs text-obsidian-400 hover:text-gold-400 transition-colors px-3 py-1 border border-obsidian-700">Edit</button>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'Reviews' && (
-          <div className="bg-obsidian-900 border border-obsidian-800">
-            <div className="p-5 border-b border-obsidian-800">
-              <h3 className="text-white font-medium">Customer Reviews</h3>
-            </div>
-            <div className="divide-y divide-obsidian-800">
-              {reviews.map((r) => (
-                <div key={r.id} className="p-5">
-                  <div className="flex items-start justify-between mb-2">
-                    <div>
-                      <span className="text-white text-sm font-medium">{r.name}</span>
-                      <span className="text-obsidian-500 text-xs ml-3">{r.location}</span>
-                    </div>
-                    <div className="flex gap-0.5">
-                      {[...Array(r.rating)].map((_,i)=><span key={i} className="text-gold-500 text-xs">★</span>)}
-                    </div>
-                  </div>
-                  <p className="text-obsidian-400 text-sm italic mb-2">"{r.comment}"</p>
-                  <div className="text-gold-600 text-[10px] uppercase tracking-wider">{r.service}</div>
                 </div>
               ))}
             </div>

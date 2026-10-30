@@ -19,7 +19,7 @@ const ROUTES: Record<string, Meta> = {
   '/': {
     title: `${BRAND} | Luxury Tempo Traveller & Car Rental in Gurgaon`,
     description:
-      'Luxury Tempo Traveller, 40-seater AC bus, Innova Crysta and premium car rental across Gurgaon and Delhi NCR. Rated 4.7 by 700+ travellers. Only 10% advance to confirm.',
+      'Luxury Tempo Traveller, 40-seater AC bus, Innova Crysta and premium car rental across Gurgaon and Delhi NCR. Only 10% advance to confirm.',
   },
   '/fleet': {
     title: `Our Fleet | Tempo Traveller, AC Bus & Sedans | ${BRAND}`,
@@ -55,11 +55,6 @@ const ROUTES: Record<string, Meta> = {
     title: `Gallery | Our Vehicles & Journeys | ${BRAND}`,
     description:
       'Photographs of our Maharaja Tempo Traveller, AC coaches and the journeys we have run across North India.',
-  },
-  '/reviews': {
-    title: `Customer Reviews | Rated 4.7 by 700+ Travellers | ${BRAND}`,
-    description:
-      'Read what our travellers say. Rated 4.7 out of 5 by more than 700 customers across group tours, weddings, corporate travel and airport transfers.',
   },
   '/about': {
     title: `About Us | 15+ Years of Group Travel | ${BRAND}`,

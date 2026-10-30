@@ -17,6 +17,12 @@ function apiRoutes(env: Record<string, string>): Plugin {
         if (!req.url?.startsWith('/api/')) return next()
 
         const route = req.url.split('?')[0].replace(/^\/api\//, '')
+
+        // Source modules the client imports (e.g. /api/_lib/pricing.ts) must
+        // be served by Vite, not run as Functions. Vercel likewise skips
+        // `_`-prefixed paths, and real endpoints never carry an extension.
+        if (/(^|\/)_/.test(route) || path.extname(route)) return next()
+
         const file = path.resolve(__dirname, 'api', `${route}.ts`)
 
         try {

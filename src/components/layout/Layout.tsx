@@ -7,8 +7,7 @@ import WhatsAppFloat from '@/components/sections/WhatsAppFloat'
 
 export default function Layout() {
   return (
-    <div className="min-h-screen flex flex-col bg-cream">
-      <div className="noise-overlay" aria-hidden="true" />
+    <div className="min-h-screen flex flex-col bg-mist">
       <Navbar />
       <motion.main
         className="flex-1"

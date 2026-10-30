@@ -1,10 +1,11 @@
 import React from 'react'
 import { useParams, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Star, Users, Check } from 'lucide-react'
+import { Users, Check } from 'lucide-react'
 import { vehicles } from '@/data'
-import { formatCurrency, whatsappBookingLink } from '@/lib/utils'
+import { whatsappBookingLink, PHONE_HREF } from '@/lib/utils'
 import CTASection from '@/components/sections/CTASection'
+import VehiclePhoto from '@/components/site/VehiclePhoto'
 
 export default function FleetDetailPage() {
   const { slug } = useParams<{ slug: string }>()
@@ -32,44 +33,23 @@ export default function FleetDetailPage() {
               <p className="text-obsidian-400 text-xl mb-6">{vehicle.tagline}</p>
 
               <div className="flex items-center gap-4 mb-8">
-                <div className="flex items-center gap-1 text-gold-400">
-                  <Star size={14} fill="currentColor" />
-                  <span className="font-medium">{vehicle.rating}</span>
-                </div>
-                <span className="text-obsidian-600 text-sm">({vehicle.reviews} reviews)</span>
-                <span className="text-obsidian-600">·</span>
                 <div className="flex items-center gap-1 text-obsidian-400 text-sm">
                   <Users size={13} /> {vehicle.seats} seats
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-4 mb-8">
-                <div className="text-center bg-obsidian-900 border border-obsidian-800 px-6 py-4">
-                  <div className="font-display text-gold-400 text-2xl">{formatCurrency(vehicle.pricePerKm)}</div>
-                  <div className="text-obsidian-500 text-xs uppercase tracking-wider">per km</div>
-                </div>
-                {vehicle.pricePerDay && (
-                  <div className="text-center bg-obsidian-900 border border-obsidian-800 px-6 py-4">
-                    <div className="font-display text-gold-400 text-2xl">{formatCurrency(vehicle.pricePerDay)}</div>
-                    <div className="text-obsidian-500 text-xs uppercase tracking-wider">per day</div>
-                  </div>
-                )}
-              </div>
-
               <div className="flex flex-wrap gap-3">
                 <a href={whatsappBookingLink(vehicle.name, `${vehicle.seats} seats`)}
                   target="_blank" rel="noopener noreferrer" className="btn-gold text-xs">
-                  Book This Vehicle
+                  Enquire Now
                 </a>
-                <a href="tel:+919811368167" className="btn-luxury text-xs">Call for Best Rate</a>
+                <a href={PHONE_HREF} className="btn-luxury on-dark text-xs">Call Us</a>
               </div>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}
               className="relative overflow-hidden">
-              <img src={vehicle.images[0]} alt={vehicle.name}
-                className="w-full h-80 object-cover"
-                onError={(e) => { (e.target as HTMLImageElement).src = '/images/cars/traveller.webp' }} />
+              <VehiclePhoto src={vehicle.images[0]} alt={vehicle.name} full={vehicle.showFullPhoto} className="aspect-[4/3]" />
             </motion.div>
           </div>
         </div>

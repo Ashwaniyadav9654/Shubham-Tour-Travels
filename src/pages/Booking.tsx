@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { useSearchParams } from 'react-router-dom'
 import {
   Phone, MessageCircle, AlertCircle, Sparkles, Users,
   RotateCcw, Mail, Loader2, Car, MailCheck, Check,
@@ -30,7 +31,17 @@ const emptyForm = {
 }
 
 export default function BookingPage() {
-  const [form, setForm] = useState(emptyForm)
+  // Package pages link here with ?service=&to=&message= so the enquiry
+  // arrives pre-filled with the trip the customer was looking at.
+  const [params] = useSearchParams()
+  const [form, setForm] = useState(() => ({
+    ...emptyForm,
+    service: serviceOptions.includes(params.get('service') ?? '') ? params.get('service')! : '',
+    to: params.get('to') ?? '',
+    date: params.get('date') ?? '',
+    passengers: params.get('passengers') ?? '',
+    message: params.get('message') ?? '',
+  }))
   const [status, setStatus] = useState<Status>('idle')
   const [receipt, setReceipt] = useState<ItineraryReceipt | null>(null)
   const [errorMsg, setErrorMsg] = useState('')

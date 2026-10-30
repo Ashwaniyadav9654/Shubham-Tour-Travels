@@ -2,34 +2,50 @@ export interface Vehicle {
   id: string
   name: string
   tagline: string
-  category: 'tempo-traveller' | 'maharaja' | 'innova' | 'sedan' | 'suv' | 'corporate'
+  category: 'tempo-traveller' | 'maharaja' | 'bus' | 'innova' | 'sedan' | 'suv' | 'corporate'
   seats: number
-  pricePerKm: number
+  /** Internal rate, shown only in the admin dashboard — never on public pages. */
+  pricePerKm?: number
   pricePerDay?: number
   features: string[]
   amenities: string[]
   images: string[]
+  /** Show the whole photo instead of cropping it to fill the card. */
+  showFullPhoto?: boolean
   badge?: string
   popular?: boolean
-  rating: number
-  reviews: number
   fuelType: string
   ac: boolean
 }
+
+export type PackageCategory =
+  | 'hill-station'
+  | 'pilgrimage'
+  | 'heritage'
+  | 'wildlife'
+  | 'beach'
+  | 'international'
+
+export type TravellerType = 'family' | 'couple' | 'friends' | 'corporate'
 
 export interface TourPackage {
   id: string
   title: string
   destination: string
+  /** Short region label shown on destination cards, e.g. "Uttarakhand". */
+  region: string
   duration: string
-  price: number
-  originalPrice?: number
+  summary: string
+  /** Hotel / stay standard, e.g. "Standard / Deluxe hotels". */
+  stay: string
   includes: string[]
   highlights: string[]
+  itinerary: string[]
   image: string
-  category: 'hill-station' | 'religious' | 'heritage' | 'wildlife' | 'beach'
-  rating: number
-  reviews: number
+  category: PackageCategory
+  travellers: TravellerType[]
+  /** Listed under "Group departures" as a fixed-departure trip. */
+  group?: boolean
   popular?: boolean
 }
 
@@ -41,17 +57,6 @@ export interface Service {
   features: string[]
   startingPrice: number
   image: string
-}
-
-export interface Review {
-  id: string
-  name: string
-  location: string
-  rating: number
-  comment: string
-  date: string
-  service: string
-  avatar?: string
 }
 
 export interface BookingInquiry {

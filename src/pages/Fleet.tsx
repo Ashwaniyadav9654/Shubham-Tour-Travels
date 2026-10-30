@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Star, Users, Check } from 'lucide-react'
+import { Users, Check } from 'lucide-react'
 import { vehicles } from '@/data'
-import { formatCurrency, whatsappBookingLink } from '@/lib/utils'
+import { whatsappBookingLink } from '@/lib/utils'
+import VehiclePhoto from '@/components/site/VehiclePhoto'
 import type { Vehicle } from '@/types'
 
 const categories = [
@@ -157,31 +158,20 @@ function MaharajaFeaturedCard({ vehicle }: { vehicle: Vehicle }) {
                 <div className="text-[10px] text-obsidian-500 uppercase tracking-wider">Fuel</div>
               </div>
               <div className="text-center">
-                <div className="flex items-center justify-center gap-1 text-gold-400 text-xs mb-0.5">
-                  <Star size={11} fill="currentColor" /> {vehicle.rating}
-                </div>
-                <div className="text-[10px] text-obsidian-500 uppercase tracking-wider">Rating</div>
+                <div className="text-white text-sm font-medium mb-0.5">{vehicle.ac ? 'AC' : 'Non-AC'}</div>
+                <div className="text-[10px] text-obsidian-500 uppercase tracking-wider">Climate</div>
               </div>
             </div>
           </div>
 
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="text-obsidian-500 text-[10px] uppercase tracking-wider mb-1">Starting from</div>
-              <div className="font-display text-gold-400 text-3xl font-bold">
-                ₹{vehicle.pricePerKm}<span className="text-obsidian-400 text-sm font-normal font-body">/km</span>
-              </div>
-              <div className="text-obsidian-500 text-[10px] mt-0.5">Min. 250 km/day outstation</div>
-            </div>
-            <a
-              href={whatsappBookingLink(vehicle.name, `${vehicle.seats} seats`)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold text-xs py-3 px-7"
-            >
-              Book Now
-            </a>
-          </div>
+          <a
+            href={whatsappBookingLink(vehicle.name, `${vehicle.seats} seats`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-gold text-xs py-3 px-7"
+          >
+            Enquire Now
+          </a>
         </div>
       </div>
     </div>
@@ -196,12 +186,13 @@ function VehicleCard({ vehicle, index }: { vehicle: Vehicle; index: number }) {
       transition={{ duration: 0.4, delay: index * 0.06 }}
       className="group bg-white border border-obsidian-100 hover:border-gold-300 transition-all duration-400 overflow-hidden hover-lift"
     >
-      <div className="relative h-52 overflow-hidden bg-obsidian-100">
-        <img
+      <div className="relative">
+        <VehiclePhoto
           src={vehicle.images[0]}
           alt={vehicle.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-          onError={(e) => { (e.target as HTMLImageElement).src = '/images/cars/crysta.png' }}
+          full={vehicle.showFullPhoto}
+          className="h-56"
+          imgClassName="transition-transform duration-700 group-hover:scale-105"
         />
         {vehicle.badge && (
           <div className="absolute top-4 left-4 bg-gold-500 text-obsidian-950 text-[10px] tracking-[0.2em] px-3 py-1 font-semibold">
@@ -212,10 +203,6 @@ function VehicleCard({ vehicle, index }: { vehicle: Vehicle; index: number }) {
       <div className="p-6">
         <div className="flex justify-between items-start mb-1">
           <h3 className="font-display text-obsidian-950 text-xl">{vehicle.name}</h3>
-          <div className="flex items-center gap-1 text-gold-500 text-xs shrink-0 ml-2">
-            <Star size={12} fill="currentColor" />
-            {vehicle.rating}
-          </div>
         </div>
         <p className="text-obsidian-400 text-xs mb-4">{vehicle.tagline}</p>
 
@@ -245,22 +232,14 @@ function VehicleCard({ vehicle, index }: { vehicle: Vehicle; index: number }) {
           ))}
         </ul>
 
-        <div className="flex items-center justify-between">
-          <div>
-            <div className="text-obsidian-400 text-[10px] uppercase tracking-wider">Starting from</div>
-            <div className="font-bold text-obsidian-950 text-xl font-display">
-              {formatCurrency(vehicle.pricePerKm)}<span className="text-obsidian-400 text-xs font-normal font-body">/km</span>
-            </div>
-          </div>
-          <a
-            href={whatsappBookingLink(vehicle.name, `${vehicle.seats} seats`)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-gold text-xs py-2.5 px-5"
-          >
-            Book Now
-          </a>
-        </div>
+        <a
+          href={whatsappBookingLink(vehicle.name, `${vehicle.seats} seats`)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-gold text-xs py-2.5 px-5 w-full"
+        >
+          Enquire Now
+        </a>
       </div>
     </motion.div>
   )

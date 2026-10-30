@@ -47,8 +47,8 @@ export function PackageCard({ pkg }: { pkg: TourPackage }) {
         <p className="mt-1.5 text-sm text-navy-muted">{pkg.stay}</p>
 
         <div className="mt-auto flex flex-wrap items-center gap-2 pt-5">
-          <Link to={quoteHref(pkg)} className={`${btn.primary} px-5 py-2.5`}>
-            Get quote
+          <Link to={`/customize/${pkg.id}`} className={`${btn.primary} px-5 py-2.5`}>
+            Customise trip
           </Link>
           <Link to={`/tours/${pkg.id}`} className={btn.outline}>
             Details <ArrowUpRight size={14} />
@@ -92,8 +92,8 @@ export function GroupTripCard({ pkg }: { pkg: TourPackage }) {
             View itinerary
           </Link>
           <div className="flex items-center gap-2">
-            <Link to={quoteHref(pkg)} className={`${btn.primary} flex-1 py-2.5`}>
-              Get quote
+            <Link to={`/customize/${pkg.id}`} className={`${btn.primary} flex-1 py-2.5`}>
+              Customise
             </Link>
             <a
               href={packageWhatsApp(pkg)}

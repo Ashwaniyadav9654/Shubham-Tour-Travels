@@ -55,8 +55,8 @@ export default function ToursPage() {
             Trips planned around you, not a brochure.
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-navy-muted">
-            Every package can be adjusted to your dates, group size and budget. Road trips from Delhi NCR travel
-            in our own Maharaja Tempo Travellers.
+            Every package can be adjusted to your dates, budget and hotel choice. Road trips from Delhi NCR travel
+            in our own vehicles, chosen for your group size.
           </p>
         </motion.div>
 

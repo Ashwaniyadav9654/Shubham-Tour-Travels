@@ -12,6 +12,8 @@ import FleetPage from '@/pages/Fleet'
 import FleetDetailPage from '@/pages/FleetDetail'
 import ToursPage from '@/pages/Tours'
 import PackageDetailPage from '@/pages/PackageDetail'
+import TripBuilderPage from '@/pages/TripBuilder'
+import PhotoCreditsPage from '@/pages/PhotoCredits'
 import AirportTransferPage from '@/pages/AirportTransfer'
 import CorporatePage from '@/pages/Corporate'
 import WeddingPage from '@/pages/Wedding'
@@ -54,6 +56,9 @@ export default function App() {
             <Route path="/fleet/:slug" element={<FleetDetailPage />} />
             <Route path="/tours" element={<ToursPage />} />
             <Route path="/tours/:id" element={<PackageDetailPage />} />
+            <Route path="/customize" element={<TripBuilderPage />} />
+            <Route path="/customize/:id" element={<TripBuilderPage />} />
+            <Route path="/photo-credits" element={<PhotoCreditsPage />} />
             <Route path="/airport-transfer" element={<AirportTransferPage />} />
             <Route path="/corporate" element={<CorporatePage />} />
             <Route path="/wedding" element={<WeddingPage />} />

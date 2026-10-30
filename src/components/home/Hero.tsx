@@ -13,6 +13,14 @@ export default function Hero() {
 
   const plan = (e: React.FormEvent) => {
     e.preventDefault()
+    const dest = destinations.find((d) => d.name === to)
+    if (dest) {
+      const q = new URLSearchParams()
+      if (passengers) q.set('adults', passengers)
+      if (date) q.set('date', date)
+      navigate(`${dest.to.replace('/tours/', '/customize/')}?${q}`)
+      return
+    }
     const params = new URLSearchParams({ service: 'Luxury Group Tour' })
     if (to) params.set('to', to)
     if (passengers) params.set('passengers', passengers)

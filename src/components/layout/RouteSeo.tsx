@@ -56,6 +56,11 @@ const ROUTES: Record<string, Meta> = {
     description:
       'Photographs of our Maharaja Tempo Traveller, AC coaches and the journeys we have run across North India.',
   },
+  '/customize': {
+    title: `Build Your Own Trip | ${BRAND}`,
+    description:
+      'Customise a holiday package: choose 3, 4 or 5 Star hotels, add days and local sightseeing, pick your vehicle and get a written quote.',
+  },
   '/about': {
     title: `About Us | 15+ Years of Group Travel | ${BRAND}`,
     description:
@@ -92,7 +97,10 @@ export default function RouteSeo() {
     // /fleet/innova-crysta and friends inherit the fleet listing copy
     const meta =
       ROUTES[pathname] ??
-      (pathname.startsWith('/fleet/') ? ROUTES['/fleet'] : FALLBACK)
+      (pathname.startsWith('/fleet/') ? ROUTES['/fleet']
+        : pathname.startsWith('/customize/') ? ROUTES['/customize']
+        : pathname.startsWith('/tours/') ? ROUTES['/tours']
+        : FALLBACK)
 
     document.title = meta.title
     setMeta('name', 'description', meta.description)

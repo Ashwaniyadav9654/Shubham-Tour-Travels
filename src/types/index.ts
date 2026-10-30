@@ -38,9 +38,18 @@ export interface TourPackage {
   summary: string
   /** Hotel / stay standard, e.g. "Standard / Deluxe hotels". */
   stay: string
-  includes: string[]
+  /** Trip-specific inclusions on top of the standard list (see packageInclusions). */
+  extras: string[]
+  /** Customer flies in; flights are not included. */
+  flyIn?: boolean
+  /** Day trip: no hotel or meals. */
+  sameDay?: boolean
+  /** Parking is not covered (e.g. Kashmir, where local rules apply). */
+  parkingExcluded?: boolean
   highlights: string[]
   itinerary: string[]
+  /** Real-world constraints worth knowing before booking (closures, permits, season). */
+  note?: string
   image: string
   category: PackageCategory
   travellers: TravellerType[]

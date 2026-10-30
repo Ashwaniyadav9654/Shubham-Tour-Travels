@@ -169,7 +169,7 @@ export function GroupDepartures() {
         <SectionHeading
           eyebrow="Group departures"
           title="Travel together. Arrive together."
-          sub="Small-group trips from Gurgaon in our own Tempo Travellers. Join a departure or book the whole vehicle."
+          sub="Small-group trips from Gurgaon with the vehicle, hotels, breakfast and dinner included. Join a departure or book it privately."
           action={<ArrowLink to="/tours#group-departures">All group trips</ArrowLink>}
         />
         <Carousel>
@@ -216,7 +216,7 @@ export function CustomTripBanner() {
               </li>
             ))}
           </ol>
-          <Link to="/booking?service=Luxury%20Group%20Tour" className={cn(btn.primary, 'mt-10')}>
+          <Link to="/customize" className={cn(btn.primary, 'mt-10')}>
             Build my trip <ArrowUpRight size={16} />
           </Link>
         </div>

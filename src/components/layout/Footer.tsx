@@ -117,7 +117,10 @@ export default function Footer() {
 
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/50 md:flex-row">
           <p>© {new Date().getFullYear()} Shubham Tour &amp; Travels. All rights reserved.</p>
-          <p>GST registered · 24×7 support · GPS-tracked fleet</p>
+          <p>
+            GST registered · 24×7 support · GPS-tracked fleet ·{' '}
+            <Link to="/photo-credits" className="hover:text-white">Photo credits</Link>
+          </p>
         </div>
       </div>
     </footer>

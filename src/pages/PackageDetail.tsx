@@ -1,13 +1,12 @@
 import React from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Check, Clock, Hotel, MapPin, Phone } from 'lucide-react'
+import { ArrowLeft, Check, Clock, Hotel, Info, MapPin, Phone } from 'lucide-react'
 import { tourPackages, bookingTerms } from '@/data'
+import { packageInclusions, packageExclusions } from '@/data/packages'
 import { PHONE_HREF, PHONE_NUMBER } from '@/lib/utils'
 import { btn, WhatsAppIcon } from '@/components/site/ui'
 import { PackageCard, quoteHref, packageWhatsApp } from '@/components/site/PackageCard'
-
-const extras = ['Toll tax', 'Parking', 'State permits', 'Entry tickets', 'Meals unless stated']
 
 export default function PackageDetailPage() {
   const { id } = useParams<{ id: string }>()
@@ -78,11 +77,21 @@ export default function PackageDetailPage() {
             ))}
           </ol>
 
+          {pkg.note && (
+            <div className="mt-10 flex gap-3 rounded-2xl border border-sun/30 bg-sun/10 p-5 text-sm text-navy">
+              <Info size={18} className="mt-0.5 shrink-0 text-sun" />
+              <p>
+                <span className="font-semibold">Good to know: </span>
+                {pkg.note}
+              </p>
+            </div>
+          )}
+
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             <div className="rounded-3xl bg-white p-6">
               <h3 className="font-display text-xl font-semibold text-navy">Included</h3>
               <ul className="mt-4 space-y-2.5 text-sm text-navy-soft">
-                {pkg.includes.map((item) => (
+                {packageInclusions(pkg).map((item) => (
                   <li key={item} className="flex gap-2">
                     <Check size={16} className="mt-0.5 shrink-0 text-sea" /> {item}
                   </li>
@@ -92,7 +101,7 @@ export default function PackageDetailPage() {
             <div className="rounded-3xl bg-white p-6">
               <h3 className="font-display text-xl font-semibold text-navy">Not included</h3>
               <ul className="mt-4 space-y-2.5 text-sm text-navy-muted">
-                {extras.map((item) => (
+                {packageExclusions(pkg).map((item) => (
                   <li key={item}>– {item}</li>
                 ))}
               </ul>
@@ -103,14 +112,17 @@ export default function PackageDetailPage() {
         {/* Enquiry card */}
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <div className="rounded-3xl border border-line bg-white p-7 shadow-xl shadow-navy/5">
-            <p className="font-display text-2xl font-semibold text-navy">Get a free quote</p>
+            <p className="font-display text-2xl font-semibold text-navy">Make it your trip</p>
             <p className="mt-2 text-sm text-navy-muted">
-              Share your dates and group size and we will send a written quote for this trip. Only{' '}
+              Change hotels, days, activities and vehicle, then get a written quote for exactly that trip. Only{' '}
               {bookingTerms.advancePercent}% advance to confirm.
             </p>
             <div className="mt-6 grid gap-3">
-              <Link to={quoteHref(pkg)} className={btn.primary}>
-                Get a quote
+              <Link to={`/customize/${pkg.id}`} className={btn.primary}>
+                Customise this trip
+              </Link>
+              <Link to={quoteHref(pkg)} className={btn.outline}>
+                Quick quote
               </Link>
               <a href={packageWhatsApp(pkg)} target="_blank" rel="noopener noreferrer" className={btn.outline}>
                 <WhatsAppIcon /> Ask on WhatsApp

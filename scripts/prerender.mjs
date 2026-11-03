@@ -9,7 +9,7 @@
  * Vercel serves dist/tours/kashmir-valley.html at /tours/kashmir-valley
  * (cleanUrls in vercel.json); the browser then hydrates the same markup.
  */
-import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs'
+import { readFileSync, readdirSync, writeFileSync, mkdirSync, rmSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
@@ -18,7 +18,12 @@ const dist = join(root, 'dist')
 const ssrDir = join(root, 'dist-ssr')
 const { render, getSeo, allRoutes } = await import(pathToFileURL(join(ssrDir, 'entry-server.js')).href)
 
-const template = readFileSync(join(dist, 'index.html'), 'utf8')
+// Preload the Latin font file so headings don't repaint late when it arrives.
+const fontFile = readdirSync(join(dist, 'assets')).find((f) => /^plus-jakarta-sans-latin-wght-normal-.*\.woff2$/.test(f))
+const fontPreload = fontFile
+  ? `<link rel="preload" href="/assets/${fontFile}" as="font" type="font/woff2" crossorigin />\n    `
+  : ''
+const template = readFileSync(join(dist, 'index.html'), 'utf8').replace('</title>', `</title>\n    ${fontPreload}`.trimEnd())
 const GA_ID = process.env.VITE_GA_MEASUREMENT_ID?.trim()
 
 const esc = (s) =>

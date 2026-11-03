@@ -26,10 +26,14 @@ import LoginPage from '@/pages/Login'
 import AdminPage from '@/pages/Admin'
 import NotFoundPage from '@/pages/NotFound'
 
-export default function App() {
+/**
+ * Everything inside the router. Rendered by the browser (App, below) and by
+ * the build-time prerenderer (entry-server.tsx) inside a StaticRouter.
+ */
+export function AppRoutes() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <>
         {/* Global Lenis smooth scroll + ScrollTrigger sync (renders nothing) */}
         <SmoothScroll />
         {/* Per-route <title>, description and canonical (renders nothing) */}
@@ -71,7 +75,15 @@ export default function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </>
     </AuthProvider>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   )
 }

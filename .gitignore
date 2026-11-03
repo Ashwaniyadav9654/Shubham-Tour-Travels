@@ -3,3 +3,4 @@ dist
 .env
 # VS Code Local History — can contain secrets
 .history/
+dist-ssr

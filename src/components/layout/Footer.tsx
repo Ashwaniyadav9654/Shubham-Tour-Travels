@@ -50,7 +50,7 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <Link to="/" className="inline-flex items-center gap-3">
-              <img src="/images/logo.png" alt="Shubham Tour & Travels logo" className="h-11 w-11 object-contain" />
+              <img src="/images/logo-128.webp" width={44} height={44} alt="Shubham Tour & Travels logo" className="h-11 w-11 object-contain" />
               <span className="leading-none">
                 <span className="block font-display text-lg font-semibold text-white">Shubham</span>
                 <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.2em] text-white/50">

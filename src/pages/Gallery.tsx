@@ -4,14 +4,14 @@ import { X } from 'lucide-react'
 
 const galleryItems = [
   { src: '/images/cars/traveller.webp', label: 'Luxury Tempo Traveller', category: 'fleet' },
-  { src: '/images/cars/crysta.png', label: 'Toyota Innova Crysta', category: 'fleet' },
+  { src: '/images/cars/crysta.webp', label: 'Toyota Innova Crysta', category: 'fleet' },
   { src: '/images/cars/grandvitara.webp', label: 'Grand Vitara', category: 'fleet' },
-  { src: '/images/cars/honda-city4.png', label: 'Honda City ZX', category: 'fleet' },
+  { src: '/images/cars/honda-city4.webp', label: 'Honda City ZX', category: 'fleet' },
   { src: '/images/cars/ciaz.webp', label: 'Maruti Ciaz', category: 'fleet' },
-  { src: '/images/cars/Ertiga.jpg', label: 'Maruti Ertiga', category: 'fleet' },
-  { src: '/images/bg.jpg', label: 'Manali Tour', category: 'tours' },
-  { src: '/images/Safety.jpg', label: 'Safety & Comfort', category: 'experience' },
-  { src: '/images/support.jpg', label: '24/7 Support', category: 'experience' },
+  { src: '/images/cars/Ertiga.webp', label: 'Maruti Ertiga', category: 'fleet' },
+  { src: '/images/bg.webp', label: 'Manali Tour', category: 'tours' },
+  { src: '/images/Safety.webp', label: 'Safety & Comfort', category: 'experience' },
+  { src: '/images/support.webp', label: '24/7 Support', category: 'experience' },
 ]
 
 const cats = ['all', 'fleet', 'tours', 'experience']
@@ -57,7 +57,7 @@ export default function GalleryPage() {
                 onClick={() => setLightbox(item.src)}>
                 <img src={item.src} alt={item.label}
                   className="w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  onError={(e) => { (e.target as HTMLImageElement).src = '/images/bg.jpg' }} />
+                  onError={(e) => { (e.target as HTMLImageElement).src = '/images/bg.webp' }} />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-end">
                   <div className="p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                     <p className="text-white text-sm font-medium">{item.label}</p>

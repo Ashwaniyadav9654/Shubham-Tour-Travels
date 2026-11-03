@@ -13,7 +13,7 @@ export default function PhotoCreditsPage() {
         <ul className="mt-10 divide-y divide-line rounded-3xl border border-line bg-white">
           {photoCredits.map((c) => (
             <li key={c.image} className="flex items-center gap-4 p-4">
-              <img src={c.image} alt="" loading="lazy" className="h-14 w-20 shrink-0 rounded-xl object-cover" />
+              <img src={c.image.replace(/\.(jpg|webp)$/, '-800.webp')} alt={c.title} width={80} height={56} loading="lazy" className="h-14 w-20 shrink-0 rounded-xl object-cover" />
               <p className="text-sm text-navy-soft">
                 <a href={c.source} target="_blank" rel="noopener noreferrer" className="font-medium text-navy hover:text-sea">
                   {c.title}

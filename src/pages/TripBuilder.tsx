@@ -10,6 +10,7 @@ import { activitiesByPackage } from '@/data/activities'
 import type { TourPackage } from '@/types'
 import { cn, whatsappLink, PHONE_HREF, PHONE_NUMBER } from '@/lib/utils'
 import { btn, WhatsAppIcon } from '@/components/site/ui'
+import { imgSet } from '@/lib/img'
 
 type Stars = '3' | '4' | '5'
 const STAR_OPTIONS: Stars[] = ['3', '4', '5']
@@ -68,7 +69,7 @@ function PackagePicker() {
               to={`/customize/${p.id}`}
               className="group flex items-center gap-4 rounded-3xl border border-line bg-white p-3 transition-colors hover:border-sea"
             >
-              <img src={p.image} alt="" loading="lazy" className="h-20 w-24 shrink-0 rounded-2xl object-cover" />
+              <img {...imgSet(p.image, [480])} sizes="96px" width={96} height={80} alt={p.title} loading="lazy" className="h-20 w-24 shrink-0 rounded-2xl object-cover" />
               <span className="min-w-0">
                 <span className="block truncate font-display text-lg font-semibold text-navy group-hover:text-sea">
                   {p.title}
@@ -217,7 +218,7 @@ function Builder({ pkg }: { pkg: TourPackage }) {
       {/* Header */}
       <section className="px-3 pt-3 sm:px-5 sm:pt-5">
         <div className="relative overflow-hidden rounded-[2rem]">
-          <img src={pkg.image} alt="" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={pkg.image} alt={`${pkg.title}: customise your trip`} className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/70 to-navy/30" />
           <div className="relative px-6 py-12 sm:px-10 md:px-14 md:py-16">
             <Link to={`/tours/${pkg.id}`} className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
@@ -404,7 +405,7 @@ function Builder({ pkg }: { pkg: TourPackage }) {
                       vehicle?.id === v.id ? 'border-sea bg-sea-tint' : 'border-line hover:border-sea'
                     )}
                   >
-                    <img src={v.images[0]} alt="" className="h-14 w-20 shrink-0 rounded-xl object-cover" />
+                    <img {...imgSet(v.images[0], [480])} sizes="80px" width={80} height={56} alt={v.name} loading="lazy" className="h-14 w-20 shrink-0 rounded-xl object-cover" />
                     <span>
                       <span className="block font-semibold text-navy">{v.name}</span>
                       <span className="block text-xs text-navy-muted">

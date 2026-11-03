@@ -45,7 +45,7 @@ export default function AboutPage() {
             >
               <div className="relative overflow-hidden">
                 <img
-                  src="/images/Safety.jpg"
+                  src="/images/Safety.webp"
                   alt="Our Team"
                   className="w-full h-80 object-cover"
                 />

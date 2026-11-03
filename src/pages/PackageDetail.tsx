@@ -20,7 +20,14 @@ export default function PackageDetailPage() {
       {/* Hero */}
       <section className="px-3 pt-3 sm:px-5 sm:pt-5">
         <div className="relative flex min-h-[min(60vh,560px)] flex-col justify-end overflow-hidden rounded-[2rem]">
-          <img src={pkg.image} alt={pkg.title} className="absolute inset-0 h-full w-full object-cover" />
+          <img
+            src={pkg.image}
+            width={1600}
+            height={900}
+            fetchPriority="high"
+            alt={`${pkg.title} tour package: ${pkg.destination}`}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/30 to-navy/10" />
           <motion.div
             initial={{ opacity: 0, y: 24 }}

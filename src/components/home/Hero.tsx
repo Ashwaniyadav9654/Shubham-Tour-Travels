@@ -33,7 +33,12 @@ export default function Hero() {
       <div className="relative overflow-hidden rounded-[2rem] min-h-[640px] md:min-h-[min(86vh,820px)] flex flex-col justify-end">
         <motion.img
           src={HERO_IMAGE}
-          alt="Himalayan peaks above the clouds at sunset"
+          srcSet={`${HERO_IMAGE.replace('w=1920&h=1080', 'w=960&h=1080')} 960w, ${HERO_IMAGE} 1920w`}
+          sizes="100vw"
+          width={1920}
+          height={1080}
+          fetchPriority="high"
+          alt="Himalayan peaks above the clouds at sunset, holiday tour packages from Delhi NCR"
           className="absolute inset-0 h-full w-full object-cover"
           initial={{ scale: 1.08 }}
           animate={{ scale: 1 }}
@@ -48,13 +53,16 @@ export default function Hero() {
             transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-3xl"
           >
-            <h1 className="font-display font-semibold text-white text-[2.75rem] leading-[1.02] sm:text-6xl md:text-7xl tracking-tight">
+            <h1 className="inline-block rounded-full bg-white/15 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur-md sm:text-sm">
+              Tempo Traveller Hire &amp; Tour Packages in Gurgaon, Delhi NCR
+            </h1>
+            <p className="mt-6 font-display font-semibold text-white text-[2.75rem] leading-[1.02] sm:text-6xl md:text-7xl tracking-tight">
               Every journey,
               <br />
               travelled in comfort.
-            </h1>
+            </p>
             <p className="mt-5 max-w-xl text-base text-white/85 md:text-lg">
-              Holiday packages, group tours and luxury Tempo Travellers from Gurgaon and Delhi NCR.
+              Holiday tour packages, group tours, cabs and luxury Tempo Travellers from Gurgaon and Delhi NCR.
               Planned personally, driven professionally.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">

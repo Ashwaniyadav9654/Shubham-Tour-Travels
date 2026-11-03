@@ -35,7 +35,7 @@ export default function WeddingPage() {
       {/* Hero */}
       <section className="relative bg-obsidian-950 py-28 overflow-hidden">
         <div className="absolute inset-0 opacity-20"
-          style={{ backgroundImage: "url('/images/bg.jpg')", backgroundSize: 'cover', backgroundPosition: 'center 40%' }} />
+          style={{ backgroundImage: "url('/images/bg.webp')", backgroundSize: 'cover', backgroundPosition: 'center 40%' }} />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}>
             <Heart size={36} className="text-gold-500 mb-6" />
@@ -103,7 +103,7 @@ export default function WeddingPage() {
                   <h3 className={`font-display text-3xl mb-1 ${pkg.popular ? 'text-white' : 'text-obsidian-950'}`}>{pkg.name}</h3>
                   <p className={`text-xs mb-4 ${pkg.popular ? 'text-obsidian-400' : 'text-obsidian-400'}`}>{pkg.desc}</p>
                   <div className={`text-2xl font-display mb-1 ${pkg.popular ? 'text-gold-400' : 'text-obsidian-950'}`}>{pkg.price}</div>
-                  <p className={`text-xs mb-5 italic ${pkg.popular ? 'text-obsidian-500' : 'text-obsidian-400'}`}>{pkg.vehicles}</p>
+                  <p className={`text-xs mb-5 ${pkg.popular ? 'text-obsidian-500' : 'text-obsidian-400'}`}>{pkg.vehicles}</p>
                   <div className="space-y-2.5 mb-7">
                     {pkg.features.map((f) => (
                       <div key={f} className="flex items-center gap-2.5">

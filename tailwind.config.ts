@@ -113,11 +113,11 @@ const config: Config = {
         },
       },
       fontFamily: {
-        /* Fraunces — variable, high-contrast editorial serif. Replaces
-           Playfair Display everywhere `font-display` is already used. */
-        display: ['Fraunces', 'Playfair Display', 'Georgia', 'serif'],
-        body: ['DM Sans', 'system-ui', 'sans-serif'],
-        mono: ['DM Sans', 'ui-monospace', 'monospace'],
+        /* One typeface site-wide (self-hosted, see main.tsx). `display`
+           and `sans` are kept as names so existing classes still work. */
+        display: ['"Plus Jakarta Sans Variable"', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        body: ['"Plus Jakarta Sans Variable"', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans Variable"', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
         tightest: '-0.055em',

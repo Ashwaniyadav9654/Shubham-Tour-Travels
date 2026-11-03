@@ -30,13 +30,13 @@ export default function CTASection() {
       ref={sectionRef}
       className="relative section-pad-lg bg-ink overflow-hidden"
     >
-      {/* Parallax media. Deliberately NOT /images/Safety.jpg — that asset is
+      {/* Parallax media. Deliberately NOT /images/Safety.webp — that asset is
           a poster with its own large "SAFETY FIRST" lettering, which reads
           as a second competing headline behind this one. */}
       <div ref={mediaRef} className="absolute inset-0 z-0">
         <img
-          src="/images/bg.jpg"
-          alt=""
+          src="/images/bg.webp"
+          alt="Shubham Tour & Travels vehicle on the road"
           aria-hidden="true"
           className="w-full h-full object-cover"
           style={{ filter: 'brightness(0.24) contrast(1.18) saturate(0.9)' }}
@@ -59,7 +59,7 @@ export default function CTASection() {
               <span className="line-mask"><span data-line className="block">Ready to travel</span></span>
               <span className="line-mask">
                 <span data-line className="block">
-                  <em className="text-brass" style={{ fontStyle: 'italic' }}>in style?</em>
+                  <em className="text-brass">in style?</em>
                 </span>
               </span>
             </h2>
@@ -103,7 +103,7 @@ export default function CTASection() {
                 <span className="hue-sweep" />
                 <div className="font-display text-bone text-3xl tracking-tighter mb-3">
                   {t.value}
-                  <span className="text-obsidian-500 text-base font-body font-light">{t.unit}</span>
+                  <span className="text-obsidian-500 text-base font-body font-normal">{t.unit}</span>
                 </div>
                 <div className="eyebrow text-[10px] text-obsidian-500">{t.label}</div>
               </div>

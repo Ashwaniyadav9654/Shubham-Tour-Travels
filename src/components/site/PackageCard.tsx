@@ -4,6 +4,7 @@ import { ArrowUpRight, Clock } from 'lucide-react'
 import type { TourPackage } from '@/types'
 import { whatsappBookingLink } from '@/lib/utils'
 import { btn, WhatsAppIcon } from './ui'
+import { imgSet, CARD_SIZES } from '@/lib/img'
 
 /** Booking page link, pre-filled with this package. */
 export const quoteHref = (pkg: TourPackage) =>
@@ -22,9 +23,13 @@ export function PackageCard({ pkg }: { pkg: TourPackage }) {
     <article className="group flex flex-col">
       <Link to={`/tours/${pkg.id}`} className="relative block aspect-[4/3] overflow-hidden rounded-3xl bg-line">
         <img
-          src={pkg.image}
-          alt={pkg.title}
+          {...imgSet(pkg.image)}
+          sizes={CARD_SIZES}
+          width={800}
+          height={600}
+          alt={`${pkg.title}, ${pkg.destination}`}
           loading="lazy"
+          decoding="async"
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
         {pkg.popular && (
@@ -44,7 +49,7 @@ export function PackageCard({ pkg }: { pkg: TourPackage }) {
         <p className="mt-3 inline-flex items-center gap-1.5 text-sm text-navy-soft">
           <Clock size={14} className="text-navy-muted" /> {pkg.duration}
         </p>
-        <p className="mt-1.5 text-sm text-navy-muted">{pkg.stay}</p>
+        <p className="mt-1.5 text-sm text-navy-muted">{pkg.stay.replace('3 Star / 4 Star / 5 Star', '3★ to 5★')}</p>
 
         <div className="mt-auto flex flex-wrap items-center gap-2 pt-5">
           <Link to={`/customize/${pkg.id}`} className={`${btn.primary} px-5 py-2.5`}>
@@ -57,10 +62,11 @@ export function PackageCard({ pkg }: { pkg: TourPackage }) {
             href={packageWhatsApp(pkg)}
             target="_blank"
             rel="noopener noreferrer"
-            className={`${btn.ghost} text-[#1a9e55] hover:text-[#1a9e55]`}
+            className={`${btn.ghost} px-3 text-[#1a9e55] hover:text-[#1a9e55]`}
             aria-label={`Ask about ${pkg.title} on WhatsApp`}
+            title="Ask on WhatsApp"
           >
-            <WhatsAppIcon /> WhatsApp
+            <WhatsAppIcon size={18} />
           </a>
         </div>
       </div>
@@ -74,9 +80,13 @@ export function GroupTripCard({ pkg }: { pkg: TourPackage }) {
     <article className="flex w-[280px] shrink-0 snap-start flex-col overflow-hidden rounded-3xl border border-line bg-white sm:w-[300px]">
       <Link to={`/tours/${pkg.id}`} className="block aspect-[4/3] overflow-hidden bg-line">
         <img
-          src={pkg.image}
-          alt={pkg.title}
+          {...imgSet(pkg.image)}
+          sizes="300px"
+          width={800}
+          height={600}
+          alt={`${pkg.title}, ${pkg.destination}`}
           loading="lazy"
+          decoding="async"
           className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
         />
       </Link>
@@ -99,9 +109,11 @@ export function GroupTripCard({ pkg }: { pkg: TourPackage }) {
               href={packageWhatsApp(pkg)}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${btn.ghost} flex-1 text-[#1a9e55] hover:text-[#1a9e55]`}
+              className={`${btn.ghost} px-3 text-[#1a9e55] hover:text-[#1a9e55]`}
+              aria-label={`Ask about ${pkg.title} on WhatsApp`}
+              title="Ask on WhatsApp"
             >
-              <WhatsAppIcon /> WhatsApp
+              <WhatsAppIcon size={18} />
             </a>
           </div>
         </div>

@@ -1,84 +1,12 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
+import { getSeo } from '@/lib/seo'
 
 /**
- * Per-route title, description and canonical URL.
- *
- * This is a single-page app, so without this every route would share the
- * one <title> baked into index.html and Google would list them all
- * identically. Kept in one map rather than a <Seo> tag per page so the
- * copy stays consistent and there is one place to edit.
+ * Keeps <head> in sync on client-side navigation. The same tags are written
+ * into each page's static HTML at build time (scripts/prerender.mjs), so this
+ * only matters after the first page load.
  */
-
-const SITE = 'https://shubhamtourtravels.in'
-const BRAND = 'Shubham Tour & Travels'
-
-type Meta = { title: string; description: string }
-
-const ROUTES: Record<string, Meta> = {
-  '/': {
-    title: `${BRAND} | Luxury Tempo Traveller & Car Rental in Gurgaon`,
-    description:
-      'Luxury Tempo Traveller, 40-seater AC bus, Innova Crysta and premium car rental across Gurgaon and Delhi NCR. Only 10% advance to confirm.',
-  },
-  '/fleet': {
-    title: `Our Fleet | Tempo Traveller, AC Bus & Sedans | ${BRAND}`,
-    description:
-      'Browse our fleet: 12+2 Maharaja Luxury Tempo Traveller, 40-seater AC bus, Innova Crysta, Ertiga and executive sedans. GPS tracked, professionally chauffeured, all-inclusive rates.',
-  },
-  '/tours': {
-    title: `Luxury Group Tour Packages from Delhi NCR | ${BRAND}`,
-    description:
-      'Group tour packages to Shimla, Manali, Mussoorie, Jaipur and Rishikesh, powered by our Maharaja Luxury Tempo Traveller. Transport-focused pricing with no per-person charges.',
-  },
-  '/booking': {
-    title: `Generate Your Free Itinerary | ${BRAND}`,
-    description:
-      'Tell us your destination, dates and group size and we will build a day-by-day itinerary with a clear base price, emailed to you as a PDF within a minute.',
-  },
-  '/airport-transfer': {
-    title: `Airport Transfer Gurgaon & Delhi NCR | ${BRAND}`,
-    description:
-      'Punctual airport pickup and drop across Delhi NCR, 24/7. Clean vehicles, professional chauffeurs and flight tracking for IGI Airport transfers.',
-  },
-  '/corporate': {
-    title: `Corporate Cab & Employee Transport Gurgaon | ${BRAND}`,
-    description:
-      'Corporate travel accounts with GST billing, monthly invoicing, priority dispatch and dedicated travel support across Gurgaon and Delhi NCR.',
-  },
-  '/wedding': {
-    title: `Wedding Car & Baraat Transport Delhi NCR | ${BRAND}`,
-    description:
-      'Decorated wedding vehicles, baraat convoys and guest shuttles across Delhi NCR. Flawless coordination from Baraat to Bidaai.',
-  },
-  '/gallery': {
-    title: `Gallery | Our Vehicles & Journeys | ${BRAND}`,
-    description:
-      'Photographs of our Maharaja Tempo Traveller, AC coaches and the journeys we have run across North India.',
-  },
-  '/customize': {
-    title: `Build Your Own Trip | ${BRAND}`,
-    description:
-      'Customise a holiday package: choose 3, 4 or 5 Star hotels, add days and local sightseeing, pick your vehicle and get a written quote.',
-  },
-  '/about': {
-    title: `About Us | 15+ Years of Group Travel | ${BRAND}`,
-    description:
-      'Delhi NCR group travel specialists for over 15 years. Maharaja Tempo Travellers, AC coaches and executive cars, run with obsessive attention to detail.',
-  },
-  '/contact': {
-    title: `Contact Us | Call, WhatsApp or Email | ${BRAND}`,
-    description:
-      'Get in touch with Shubham Tour & Travels in Gurgaon. Call +91 85958 20300, message us on WhatsApp, or send an enquiry. We respond within minutes, 24/7.',
-  },
-  '/blog': {
-    title: `Travel Guides & Tips | ${BRAND}`,
-    description:
-      'Route guides, packing tips and destination advice for group road trips from Delhi NCR.',
-  },
-}
-
-const FALLBACK: Meta = ROUTES['/']
 
 function setMeta(attr: 'name' | 'property', key: string, value: string) {
   let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`)
@@ -92,27 +20,21 @@ function setMeta(attr: 'name' | 'property', key: string, value: string) {
 
 export default function RouteSeo() {
   const { pathname } = useLocation()
+  const firstLoad = useRef(true)
 
   useEffect(() => {
-    // /fleet/innova-crysta and friends inherit the fleet listing copy
-    const meta =
-      ROUTES[pathname] ??
-      (pathname.startsWith('/fleet/') ? ROUTES['/fleet']
-        : pathname.startsWith('/customize/') ? ROUTES['/customize']
-        : pathname.startsWith('/tours/') ? ROUTES['/tours']
-        : FALLBACK)
+    const seo = getSeo(pathname)
 
-    document.title = meta.title
-    setMeta('name', 'description', meta.description)
-    setMeta('property', 'og:title', meta.title)
-    setMeta('property', 'og:description', meta.description)
-    setMeta('property', 'og:url', SITE + pathname)
-    setMeta('name', 'twitter:title', meta.title)
-    setMeta('name', 'twitter:description', meta.description)
-
-    // Admin and login must never be indexed
-    const noIndex = pathname.startsWith('/admin') || pathname.startsWith('/login')
-    setMeta('name', 'robots', noIndex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1')
+    document.title = seo.title
+    setMeta('name', 'description', seo.description)
+    setMeta('name', 'robots', seo.noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1')
+    setMeta('property', 'og:title', seo.title)
+    setMeta('property', 'og:description', seo.description)
+    setMeta('property', 'og:url', seo.canonical)
+    setMeta('property', 'og:image', seo.image)
+    setMeta('name', 'twitter:title', seo.title)
+    setMeta('name', 'twitter:description', seo.description)
+    setMeta('name', 'twitter:image', seo.image)
 
     let link = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')
     if (!link) {
@@ -120,7 +42,26 @@ export default function RouteSeo() {
       link.rel = 'canonical'
       document.head.appendChild(link)
     }
-    link.href = SITE + (pathname === '/' ? '/' : pathname)
+    link.href = seo.canonical
+
+    // Page-specific structured data; the business-wide blocks in index.html stay.
+    document.head.querySelectorAll('script[data-page-ld]').forEach((n) => n.remove())
+    for (const block of seo.jsonLd) {
+      const s = document.createElement('script')
+      s.type = 'application/ld+json'
+      s.dataset.pageLd = ''
+      s.textContent = JSON.stringify(block)
+      document.head.appendChild(s)
+    }
+
+    // Google Analytics (added to each page at build time when
+    // VITE_GA_MEASUREMENT_ID is set) counts the first load itself; report
+    // later in-app navigations as page views.
+    const gtag = (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag
+    if (!firstLoad.current && gtag) {
+      gtag('event', 'page_view', { page_location: window.location.href, page_title: seo.title })
+    }
+    firstLoad.current = false
   }, [pathname])
 
   return null

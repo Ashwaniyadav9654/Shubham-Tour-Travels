@@ -56,7 +56,7 @@ export default function CorporatePage() {
       {/* Hero */}
       <section className="relative bg-obsidian-950 py-28 overflow-hidden">
         <div className="absolute inset-0 opacity-15"
-          style={{ backgroundImage: "url('/images/crysta.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }} />
+          style={{ backgroundImage: "url('/images/crysta.webp')", backgroundSize: 'cover', backgroundPosition: 'center' }} />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}>
             <Briefcase size={36} className="text-gold-500 mb-6" />

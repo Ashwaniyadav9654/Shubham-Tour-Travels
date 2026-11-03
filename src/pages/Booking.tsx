@@ -123,8 +123,8 @@ Please help me plan this.`
       <section className="relative bg-ink py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/cars/maharaja-interior.jpg"
-            alt=""
+            src="/images/cars/maharaja-interior.webp"
+            alt="Maharaja Tempo Traveller luxury interior"
             aria-hidden="true"
             className="w-full h-full object-cover"
             style={{ filter: 'brightness(0.24) contrast(1.12) saturate(1.05)' }}
@@ -143,7 +143,7 @@ Please help me plan this.`
 
             <h1 className="display-lg text-bone max-w-[18ch]">
               Generate your<br />
-              <em className="text-brass" style={{ fontStyle: 'italic' }}>itinerary.</em>
+              <em className="text-brass">itinerary.</em>
             </h1>
 
             <p className="lede text-obsidian-300 mt-10 max-w-2xl">
@@ -161,7 +161,7 @@ Please help me plan this.`
                 <div key={s.n} className="bg-ink p-6">
                   <div className="eyebrow text-[9px] text-brass mb-3">{s.n}</div>
                   <div className="font-display text-bone text-[17px] tracking-tighter mb-2">{s.t}</div>
-                  <div className="text-obsidian-500 text-[13px] font-light leading-relaxed">{s.d}</div>
+                  <div className="text-obsidian-500 text-[13px] font-normal leading-relaxed">{s.d}</div>
                 </div>
               ))}
             </div>
@@ -205,7 +205,7 @@ Please help me plan this.`
                   <div>
                     <label className="eyebrow text-[9px] text-obsidian-400 block mb-3">Email</label>
                     <input type="email" className="input-luxury" placeholder="email@example.com" value={form.email} onChange={e => update('email', e.target.value)} />
-                    <p className="text-obsidian-400 text-[11px] mt-2 font-light">We&rsquo;ll email the itinerary here.</p>
+                    <p className="text-obsidian-400 text-[11px] mt-2 font-normal">We&rsquo;ll email the itinerary here.</p>
                   </div>
                   <div>
                     <label className="eyebrow text-[9px] text-obsidian-400 block mb-3">Preferred Service</label>
@@ -229,7 +229,7 @@ Please help me plan this.`
                   <div>
                     <label className="eyebrow text-[9px] text-obsidian-400 block mb-3">Return Date</label>
                     <input type="date" min={form.date || today} className="input-luxury" value={form.returnDate} onChange={e => update('returnDate', e.target.value)} />
-                    <p className="text-obsidian-400 text-[11px] mt-2 font-light">Sets the number of days in your plan.</p>
+                    <p className="text-obsidian-400 text-[11px] mt-2 font-normal">Sets the number of days in your plan.</p>
                   </div>
                   <div className="md:col-span-2">
                     <label className="eyebrow text-[9px] text-obsidian-400 block mb-3">Number of Passengers *</label>
@@ -275,21 +275,21 @@ Please help me plan this.`
                                   {i === 0 && (
                                     <div className="eyebrow text-[8px] text-gold-600 mb-2">Recommended</div>
                                   )}
-                                  <p className="text-obsidian-500 text-[12px] font-light leading-relaxed">
+                                  <p className="text-obsidian-500 text-[12px] font-normal leading-relaxed">
                                     {v.blurb}
                                   </p>
                                 </div>
                               ))}
                             </div>
 
-                            <p className="text-obsidian-400 text-[11px] mt-5 font-light leading-relaxed">
+                            <p className="text-obsidian-400 text-[11px] mt-5 font-normal leading-relaxed">
                               Your full quotation is included in the itinerary we email you.
                             </p>
                           </>
                         ) : (
                           <div className="flex items-start gap-3">
                             <Users size={14} strokeWidth={1.6} className="text-gold-600 shrink-0 mt-0.5" />
-                            <p className="text-obsidian-600 text-[13px] font-light leading-relaxed">
+                            <p className="text-obsidian-600 text-[13px] font-normal leading-relaxed">
                               For {paxCount} guests we will arrange the required vehicles for
                               you. Generate your itinerary and our team will get back to you
                               with the rates and a full quotation.
@@ -326,7 +326,7 @@ Please help me plan this.`
                       )}
                     </button>
                   </Magnetic>
-                  <p className="text-obsidian-400 text-[12px] mt-4 text-center font-light">
+                  <p className="text-obsidian-400 text-[12px] mt-4 text-center font-normal">
                     We&rsquo;ll email your plan as a PDF, with the route and a full quotation.
                   </p>
                 </div>
@@ -340,7 +340,7 @@ Please help me plan this.`
                 <h3 className="font-display text-bone text-[21px] tracking-tighter leading-tight mb-3">
                   Skip the form.
                 </h3>
-                <p className="text-obsidian-400 text-[13px] font-light leading-relaxed mb-7">
+                <p className="text-obsidian-400 text-[13px] font-normal leading-relaxed mb-7">
                   Our team plans routes all day. Message or call and we&rsquo;ll put
                   something together with you in minutes.
                 </p>
@@ -380,13 +380,13 @@ Please help me plan this.`
                     'GST invoice on request',
                     '24/7 support for the whole trip',
                   ].map(item => (
-                    <li key={item} className="flex items-start gap-3 text-[13px] text-obsidian-600 font-light leading-relaxed">
+                    <li key={item} className="flex items-start gap-3 text-[13px] text-obsidian-600 font-normal leading-relaxed">
                       <Check size={12} strokeWidth={2.2} className="text-gold-600 shrink-0 mt-1" />
                       {item}
                     </li>
                   ))}
                 </ul>
-                <div className="mt-7 pt-6 border-t border-obsidian-950/10 space-y-2 text-[11px] text-obsidian-500 font-light leading-relaxed">
+                <div className="mt-7 pt-6 border-t border-obsidian-950/10 space-y-2 text-[11px] text-obsidian-500 font-normal leading-relaxed">
                   <p>Outstation trips are billed on a minimum of {MIN_KM_PER_DAY} km per day. Parking is extra.</p>
                   <p className="text-gold-600">Only {ADVANCE_PERCENT}% advance to confirm.</p>
                 </div>
@@ -419,9 +419,9 @@ Please help me plan this.`
 
               <h2 className="display-lg text-bone mb-8">
                 {receipt.emailedTo ? (
-                  <>Check your<br /><em className="text-brass" style={{ fontStyle: 'italic' }}>inbox.</em></>
+                  <>Check your<br /><em className="text-brass">inbox.</em></>
                 ) : (
-                  <>We&rsquo;re on<br /><em className="text-brass" style={{ fontStyle: 'italic' }}>it.</em></>
+                  <>We&rsquo;re on<br /><em className="text-brass">it.</em></>
                 )}
               </h2>
 
@@ -452,7 +452,7 @@ Please help me plan this.`
                 ].map(([label, value]) => (
                   <div key={label} className="bg-ink p-5">
                     <div className="eyebrow text-[9px] text-obsidian-600 mb-2">{label}</div>
-                    <div className="text-bone text-[15px] font-light">{value}</div>
+                    <div className="text-bone text-[15px] font-normal">{value}</div>
                   </div>
                 ))}
               </div>
@@ -466,7 +466,7 @@ Please help me plan this.`
                 <div className="border border-hairline border-t-0 p-6 flex flex-wrap items-end justify-between gap-4 text-left">
                   <div>
                     <div className="eyebrow text-[9px] text-brass mb-2">Estimated base price</div>
-                    <div className="text-obsidian-500 text-[12px] font-light">
+                    <div className="text-obsidian-500 text-[12px] font-normal">
                       {receipt.vehicle} &middot; {receipt.days} day
                       {receipt.days > 1 ? 's' : ''} &middot; approx {receipt.totalKm} km
                     </div>
@@ -480,7 +480,7 @@ Please help me plan this.`
               {!receipt.emailedTo && receipt.mailError && (
                 <div className="flex items-start gap-3 mt-8 p-5 border border-hairline text-left">
                   <AlertCircle size={15} className="text-brass shrink-0 mt-0.5" />
-                  <p className="text-obsidian-400 text-[13px] font-light leading-relaxed">
+                  <p className="text-obsidian-400 text-[13px] font-normal leading-relaxed">
                     The email didn&rsquo;t go out ({receipt.mailError}). Send us a message on
                     WhatsApp and we&rsquo;ll get the PDF to you right away.
                   </p>
@@ -488,14 +488,14 @@ Please help me plan this.`
               )}
 
               {receipt.quoteOnRequest && (
-                <p className="text-obsidian-400 text-[13px] font-light leading-relaxed mt-8 max-w-lg mx-auto">
+                <p className="text-obsidian-400 text-[13px] font-normal leading-relaxed mt-8 max-w-lg mx-auto">
                   Your group needs more than one vehicle. We will arrange the required
                   vehicles for you, and our team will get back to you with the rates and
                   a full quotation.
                 </p>
               )}
 
-              <p className="text-obsidian-500 text-[13px] font-light leading-relaxed mt-10 max-w-lg mx-auto">
+              <p className="text-obsidian-500 text-[13px] font-normal leading-relaxed mt-10 max-w-lg mx-auto">
                 Next, one of our team will call you to personalise it: hotels, meal
                 preferences, pace, and any stops you want added or dropped. Nothing is
                 confirmed until you&rsquo;re happy.

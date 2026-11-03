@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowUpRight, Users, Phone } from 'lucide-react'
+import { ArrowUpRight, Users, Phone, ChevronDown } from 'lucide-react'
 import {
   tourPackages,
   packageCategories,
@@ -14,7 +14,9 @@ import type { PackageCategory } from '@/types'
 import { cn, whatsappLink, whatsappBookingLink, PHONE_HREF, PHONE_NUMBER } from '@/lib/utils'
 import { SectionHeading, ArrowLink, Reveal, Carousel, btn, WhatsAppIcon } from '@/components/site/ui'
 import { PackageCard, GroupTripCard } from '@/components/site/PackageCard'
+import { imgSet, CARD_SIZES } from '@/lib/img'
 import VehiclePhoto from '@/components/site/VehiclePhoto'
+import { homeFaqs } from '@/lib/seo'
 
 const shell = 'mx-auto w-full max-w-7xl px-5 sm:px-8'
 const sectionPad = 'py-20 md:py-28'
@@ -25,37 +27,37 @@ const offerings = [
   {
     title: 'Tempo Traveller Hire',
     text: '12+2 Maharaja Tempo Travellers with pushback seats and ambient lighting.',
-    image: '/images/cars/maharaja-exterior.jpg',
+    image: '/images/cars/maharaja-exterior.webp',
     to: '/fleet/maharaja-12-tempo',
   },
   {
     title: 'Holiday Packages',
     text: 'Hill stations, pilgrimages, beaches and international trips.',
-    image: 'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=900&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=1200&h=900&q=70&fm=webp&fit=crop',
     to: '/tours',
   },
   {
     title: 'Group Trips',
     text: 'Fixed departures and private groups with one vehicle for everyone.',
-    image: 'https://images.unsplash.com/photo-1609920658906-8223bd289001?w=900&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1609920658906-8223bd289001?w=1200&h=900&q=70&fm=webp&fit=crop',
     to: '/tours#group-departures',
   },
   {
     title: 'Airport Transfers',
     text: 'IGI pickups and drops, 24×7, with flight tracking and a name board.',
-    image: '/images/crysta.jpg',
+    image: '/images/crysta.webp',
     to: '/airport-transfer',
   },
   {
     title: 'Corporate Travel',
     text: 'Monthly accounts, GST billing and coaches for offsites.',
-    image: '/images/cars/ac-bus-40.jpg',
+    image: '/images/cars/ac-bus-40.webp',
     to: '/corporate',
   },
   {
     title: 'Wedding Transport',
     text: 'Guest shuttles, baraat convoys and decorated cars for the couple.',
-    image: '/images/cars/maharaja-interior.jpg',
+    image: '/images/cars/maharaja-interior.webp',
     to: '/wedding',
   },
 ]
@@ -66,8 +68,8 @@ export function Offerings() {
       <div className={shell}>
         <SectionHeading
           eyebrow="Everything you need"
-          title="One travel desk for the whole journey."
-          sub="Vehicles, stays and itineraries, arranged by people who drive these roads every week."
+          title="Tempo Traveller, cabs and tour packages from one travel desk."
+          sub="Tempo Traveller hire, car rental, airport transfers and holiday packages from Gurgaon and Delhi NCR, arranged by people who drive these roads every week."
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {offerings.map((o, i) => (
@@ -77,9 +79,13 @@ export function Offerings() {
                 className="group relative flex h-64 flex-col justify-end overflow-hidden rounded-3xl p-6 md:h-72"
               >
                 <img
-                  src={o.image}
-                  alt=""
+                  {...imgSet(o.image)}
+                  sizes={CARD_SIZES}
+                  width={800}
+                  height={600}
+                  alt={`${o.title} by Shubham Tour & Travels`}
                   loading="lazy"
+                  decoding="async"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/40 to-navy/5" />
@@ -116,7 +122,7 @@ export function PackagesExplorer() {
       <div className={shell}>
         <SectionHeading
           eyebrow="Holiday packages"
-          title="Go somewhere worth the drive."
+          title="Holiday tour packages from Delhi NCR."
           sub={`${tourPackages.length} handpicked trips, each one adjustable to your dates, group size and budget.`}
           action={<ArrowLink to="/tours">All holiday packages</ArrowLink>}
         />
@@ -168,7 +174,7 @@ export function GroupDepartures() {
       <div className={shell}>
         <SectionHeading
           eyebrow="Group departures"
-          title="Travel together. Arrive together."
+          title="Group tour packages from Gurgaon."
           sub="Small-group trips from Gurgaon with the vehicle, hotels, breakfast and dinner included. Join a departure or book it privately."
           action={<ArrowLink to="/tours#group-departures">All group trips</ArrowLink>}
         />
@@ -191,8 +197,12 @@ export function CustomTripBanner() {
     <section className="px-3 sm:px-5">
       <Reveal className="relative overflow-hidden rounded-[2rem]">
         <img
-          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1800&q=80&auto=format&fit=crop"
-          alt=""
+          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&h=900&q=65&fm=webp&fit=crop"
+          srcSet="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&h=450&q=65&fm=webp&fit=crop 800w, https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&h=900&q=65&fm=webp&fit=crop 1600w"
+          sizes="100vw"
+          width={1600}
+          height={900}
+          alt="Snow-capped Himalayan peaks above a pine valley"
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover"
         />
@@ -231,7 +241,7 @@ export function Destinations() {
   return (
     <section className={sectionPad}>
       <div className={shell}>
-        <SectionHeading eyebrow="Destinations" title="Where the next journey begins." />
+        <SectionHeading eyebrow="Destinations" title="Popular destinations across India and abroad." />
         <Carousel>
           {destinations.map((d) => (
             <Link
@@ -240,9 +250,13 @@ export function Destinations() {
               className="group relative flex h-80 w-[230px] shrink-0 snap-start flex-col justify-end overflow-hidden rounded-3xl p-5 sm:w-[260px]"
             >
               <img
-                src={d.image}
-                alt={d.name}
+                {...imgSet(d.image, [480, 800])}
+                sizes="260px"
+                width={800}
+                height={600}
+                alt={`${d.name}, ${d.region} tour packages`}
                 loading="lazy"
+                decoding="async"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/10 to-transparent" />
@@ -273,9 +287,13 @@ export function TravellerTypes() {
                 className="group relative flex h-72 flex-col justify-end overflow-hidden rounded-3xl p-7 md:h-80"
               >
                 <img
-                  src={t.image}
-                  alt=""
+                  {...imgSet(t.image)}
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  width={800}
+                  height={600}
+                  alt={`${t.title} tour packages`}
                   loading="lazy"
+                  decoding="async"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/30 to-transparent" />
@@ -316,7 +334,7 @@ export function Transportation() {
       <div className={shell}>
         <SectionHeading
           eyebrow="Transportation"
-          title="Tell us how many. We bring the right vehicle."
+          title="Tempo Traveller and car rental for every group size."
           sub="Sedans to 40-seater coaches, all owned, maintained and driven by our own team."
           action={<ArrowLink to="/fleet">Full fleet</ArrowLink>}
         />
@@ -394,6 +412,32 @@ export function WhyUs() {
             </Reveal>
           ))}
         </dl>
+      </div>
+    </section>
+  )
+}
+
+/* ─── FAQ ─────────────────────────────────────────────────────────── */
+
+export function Faqs() {
+  return (
+    <section className={sectionPad}>
+      <div className={cn(shell, 'max-w-4xl')}>
+        <SectionHeading
+          eyebrow="FAQ"
+          title="Questions about Tempo Traveller hire and tour packages"
+        />
+        <div className="divide-y divide-line rounded-3xl border border-line bg-white">
+          {homeFaqs.map((f) => (
+            <details key={f.q} className="group p-6 [&_summary::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left font-semibold text-navy">
+                <h3 className="text-base md:text-lg">{f.q}</h3>
+                <ChevronDown size={18} className="shrink-0 text-navy-muted transition-transform group-open:rotate-180" />
+              </summary>
+              <p className="mt-3 leading-relaxed text-navy-soft">{f.a}</p>
+            </details>
+          ))}
+        </div>
       </div>
     </section>
   )

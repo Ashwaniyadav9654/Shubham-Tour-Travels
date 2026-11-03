@@ -9,6 +9,7 @@ import {
   TravellerTypes,
   Transportation,
   WhyUs,
+  Faqs,
   ContactBand,
 } from '@/components/home/HomeSections'
 
@@ -24,6 +25,7 @@ export default function HomePage() {
       <TravellerTypes />
       <Transportation />
       <WhyUs />
+      <Faqs />
       <ContactBand />
     </div>
   )

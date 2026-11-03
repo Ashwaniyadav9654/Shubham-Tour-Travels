@@ -68,7 +68,10 @@ function page(path, { status } = {}) {
   // Home page: start fetching the hero photo (the largest element) immediately.
   const preload = path === '/'
     ? '<link rel="preload" as="image" href="/images/hero-960.webp" imagesrcset="/images/hero-640.webp 640w, /images/hero-960.webp 960w, /images/hero-1920.webp 1920w" imagesizes="100vw" fetchpriority="high" />'
-    : ''
+    : /^\/tours\/[^/]+$/.test(path)
+      ? // Package pages: their hero photo is the largest element; fetch it first.
+        `${seo.image.includes('images.unsplash.com') ? '<link rel="preconnect" href="https://images.unsplash.com" />\n    ' : ''}<link rel="preload" as="image" href="${esc(seo.image)}" fetchpriority="high" />`
+      : ''
   html = html.replace('</head>', `    ${preload}\n    ${ld}\n    ${ga}\n  </head>`)
 
   const body = render(path)

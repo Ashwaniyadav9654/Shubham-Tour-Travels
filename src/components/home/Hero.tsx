@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { MapPin, Users, CalendarDays, ArrowRight } from 'lucide-react'
-import { HERO_IMAGE, destinations } from '@/data'
+import { HERO_IMAGE, HERO_SRCSET, destinations } from '@/data'
 import { btn } from '@/components/site/ui'
 
 export default function Hero() {
@@ -33,7 +33,7 @@ export default function Hero() {
       <div className="relative overflow-hidden rounded-[2rem] min-h-[640px] md:min-h-[min(86vh,820px)] flex flex-col justify-end">
         <motion.img
           src={HERO_IMAGE}
-          srcSet={`${HERO_IMAGE.replace('w=1920&h=1080', 'w=960&h=1080')} 960w, ${HERO_IMAGE} 1920w`}
+          srcSet={HERO_SRCSET}
           sizes="100vw"
           width={1920}
           height={1080}
@@ -86,7 +86,7 @@ export default function Hero() {
             <label className="flex items-center gap-3 rounded-2xl px-4 py-3 hover:bg-mist">
               <MapPin size={18} className="shrink-0 text-sea" />
               <span className="flex-1">
-                <span className="block text-[11px] font-semibold uppercase tracking-wider text-navy-muted">Where to</span>
+                <span className="block text-[11px] font-semibold uppercase tracking-wider text-navy-soft">Where to</span>
                 <select
                   value={to}
                   onChange={(e) => setTo(e.target.value)}
@@ -104,7 +104,7 @@ export default function Hero() {
             <label className="flex items-center gap-3 rounded-2xl px-4 py-3 hover:bg-mist">
               <Users size={18} className="shrink-0 text-sea" />
               <span className="flex-1">
-                <span className="block text-[11px] font-semibold uppercase tracking-wider text-navy-muted">Travellers</span>
+                <span className="block text-[11px] font-semibold uppercase tracking-wider text-navy-soft">Travellers</span>
                 <input
                   type="number"
                   min={1}
@@ -119,7 +119,7 @@ export default function Hero() {
             <label className="flex items-center gap-3 rounded-2xl px-4 py-3 hover:bg-mist">
               <CalendarDays size={18} className="shrink-0 text-sea" />
               <span className="flex-1">
-                <span className="block text-[11px] font-semibold uppercase tracking-wider text-navy-muted">Travel date</span>
+                <span className="block text-[11px] font-semibold uppercase tracking-wider text-navy-soft">Travel date</span>
                 <input
                   type="date"
                   value={date}

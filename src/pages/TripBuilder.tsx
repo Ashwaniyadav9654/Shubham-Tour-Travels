@@ -510,7 +510,7 @@ function StepTitle({ n, icon, title }: { n: number; icon: React.ReactNode; title
     <h2 className="flex items-center gap-3 font-display text-xl font-semibold text-navy">
       <span className="flex h-9 w-9 items-center justify-center rounded-full bg-sea-tint text-sea">{icon}</span>
       <span>
-        <span className="mr-2 text-sm font-semibold text-sun">{String(n).padStart(2, '0')}</span>
+        <span className="mr-2 text-sm font-semibold text-sun-ink">{String(n).padStart(2, '0')}</span>
         {title}
       </span>
     </h2>

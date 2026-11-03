@@ -65,9 +65,9 @@ const config: Config = {
         /* Light travel theme (home, tours, navbar, footer): airy mist
            background, deep navy type, one teal action colour, a warm sun
            accent for small labels. */
-        navy: { DEFAULT: '#13263a', soft: '#3d5166', muted: '#6b7c8f' },
-        sea: { DEFAULT: '#1f8f84', dark: '#16736a', tint: '#e5f3f1' },
-        sun: '#dd9a2b',
+        navy: { DEFAULT: '#13263a', soft: '#3d5166', muted: '#56677a' },
+        sea: { DEFAULT: '#177a70', dark: '#125f57', tint: '#e5f3f1' },
+        sun: { DEFAULT: '#dd9a2b', ink: '#a0660d' },
         mist: '#f6f8fa',
         line: '#e2e8ee',
 

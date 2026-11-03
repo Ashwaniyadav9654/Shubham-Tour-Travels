@@ -60,7 +60,11 @@ function page(path, { status } = {}) {
     ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${GA_ID}');</script>`
     : ''
-  html = html.replace('</head>', `    ${ld}\n    ${ga}\n  </head>`)
+  // Home page: start fetching the hero photo (the largest element) immediately.
+  const preload = path === '/'
+    ? '<link rel="preload" as="image" href="/images/hero-960.webp" imagesrcset="/images/hero-640.webp 640w, /images/hero-960.webp 960w, /images/hero-1920.webp 1920w" imagesizes="100vw" fetchpriority="high" />'
+    : ''
+  html = html.replace('</head>', `    ${preload}\n    ${ld}\n    ${ga}\n  </head>`)
 
   const body = render(path)
   html = setTag(html, /<div id="root"><\/div>/, `<div id="root">${body}</div>`)

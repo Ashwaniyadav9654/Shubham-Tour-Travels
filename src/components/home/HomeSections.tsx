@@ -402,16 +402,16 @@ export function WhyUs() {
             className="mb-8"
           />
         </div>
-        <dl className="border-t border-line">
+        <div className="border-t border-line">
           {reasons.map(([title, text], i) => (
             <Reveal key={title} delay={i * 0.04}>
               <div className="grid gap-2 border-b border-line py-6 sm:grid-cols-[220px_1fr] sm:gap-8">
-                <dt className="font-display text-xl font-semibold text-navy">{title}</dt>
-                <dd className="text-navy-soft sm:pt-1">{text}</dd>
+                <h3 className="font-display text-xl font-semibold text-navy">{title}</h3>
+                <p className="text-navy-soft sm:pt-1">{text}</p>
               </div>
             </Reveal>
           ))}
-        </dl>
+        </div>
       </div>
     </section>
   )

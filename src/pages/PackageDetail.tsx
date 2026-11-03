@@ -86,7 +86,7 @@ export default function PackageDetailPage() {
 
           {pkg.note && (
             <div className="mt-10 flex gap-3 rounded-2xl border border-sun/30 bg-sun/10 p-5 text-sm text-navy">
-              <Info size={18} className="mt-0.5 shrink-0 text-sun" />
+              <Info size={18} className="mt-0.5 shrink-0 text-sun-ink" />
               <p>
                 <span className="font-semibold">Good to know: </span>
                 {pkg.note}

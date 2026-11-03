@@ -184,7 +184,7 @@ export const vehicles: Vehicle[] = [
   },
 ]
 
-export { tourPackages, packageCategories, travellerTypes, destinations, HERO_IMAGE } from './packages'
+export { tourPackages, packageCategories, travellerTypes, destinations, HERO_IMAGE, HERO_SRCSET } from './packages'
 
 export const blogPosts: BlogPost[] = [
   {

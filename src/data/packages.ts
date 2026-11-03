@@ -1021,5 +1021,5 @@ export const destinations = [
   { name: 'Thailand', region: 'International', image: '/images/packages/thailand-bangkok-pattaya.webp', to: '/tours/thailand-bangkok-pattaya' },
 ]
 
-export const HERO_IMAGE =
-  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&q=70&fm=webp&fit=crop'
+export const HERO_IMAGE = '/images/hero-1920.webp'
+export const HERO_SRCSET = '/images/hero-640.webp 640w, /images/hero-960.webp 960w, /images/hero-1920.webp 1920w'

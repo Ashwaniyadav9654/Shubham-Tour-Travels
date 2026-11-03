@@ -78,7 +78,7 @@ export default function Navbar() {
           <img src="/images/logo-128.webp" width={44} height={44} alt="Shubham Tour & Travels" className="h-10 w-10 object-contain" />
           <span className="leading-none">
             <span className="block font-display text-lg font-semibold text-navy">Shubham</span>
-            <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.2em] text-navy-muted">
+            <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.2em] text-navy-soft">
               Tour &amp; Travels
             </span>
           </span>

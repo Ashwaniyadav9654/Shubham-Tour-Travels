@@ -40,7 +40,7 @@ export function PackageCard({ pkg }: { pkg: TourPackage }) {
       </Link>
 
       <div className="flex flex-1 flex-col pt-5">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-sun">{pkg.destination}</p>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-sun-ink">{pkg.destination}</p>
         <h3 className="mt-2 font-display text-[1.375rem] font-semibold leading-snug text-navy">
           <Link to={`/tours/${pkg.id}`} className="hover:text-sea transition-colors">
             {pkg.title}
@@ -91,7 +91,7 @@ export function GroupTripCard({ pkg }: { pkg: TourPackage }) {
         />
       </Link>
       <div className="flex flex-1 flex-col p-5">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-sun">{pkg.region}</p>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-sun-ink">{pkg.region}</p>
         <h3 className="mt-2 font-display text-xl font-semibold text-navy">{pkg.title}</h3>
         <p className="mt-1 text-sm text-navy-soft">
           {pkg.duration}

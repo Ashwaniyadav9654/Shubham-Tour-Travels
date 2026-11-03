@@ -17,7 +17,7 @@ export default function AboutPage() {
       <section className="bg-obsidian-950 py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }}>
+            <motion.div initial={{ x: -30 }} animate={{ x: 0 }} transition={{ duration: 0.7 }}>
               <div className="flex items-center gap-3 mb-6">
                 <div className="h-px w-10 bg-gold-500" />
                 <span className="text-gold-400 text-xs tracking-[0.25em] uppercase">Our Story</span>
@@ -38,8 +38,8 @@ export default function AboutPage() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ x: 30 }}
+              animate={{ x: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
               className="relative"
             >

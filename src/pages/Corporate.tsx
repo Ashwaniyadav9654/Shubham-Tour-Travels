@@ -58,7 +58,7 @@ export default function CorporatePage() {
         <div className="absolute inset-0 opacity-15"
           style={{ backgroundImage: "url('/images/crysta.webp')", backgroundSize: 'cover', backgroundPosition: 'center' }} />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}>
+          <motion.div initial={{ y: 24 }} animate={{ y: 0 }}>
             <Briefcase size={36} className="text-gold-500 mb-6" />
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-10 bg-gold-500" />

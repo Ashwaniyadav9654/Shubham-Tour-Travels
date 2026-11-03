@@ -134,7 +134,7 @@ Please help me plan this.`
         </div>
 
         <div className="relative z-10 shell">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+          <motion.div initial={{ y: 24 }} animate={{ y: 0 }} transition={{ duration: 0.7 }}>
             <div className="flex items-center gap-5 mb-8">
               <span className="eyebrow text-brass">Free · No obligation</span>
               <span className="h-px w-16 bg-hairline" />

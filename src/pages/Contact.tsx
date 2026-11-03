@@ -45,7 +45,7 @@ export default function ContactPage() {
     <div>
       <section className="bg-obsidian-950 py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <motion.div initial={{ y: 20 }} animate={{ y: 0 }}>
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-10 bg-gold-500" />
               <span className="text-gold-400 text-xs tracking-[0.25em] uppercase">Get In Touch</span>
@@ -63,7 +63,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
             {/* Info */}
             <div className="lg:col-span-2 space-y-6">
-              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}
+              <motion.div initial={{ x: -20 }} animate={{ x: 0 }} transition={{ delay: 0.1 }}
                 className="bg-obsidian-950 p-8">
                 <h3 className="font-display text-white text-xl mb-6">Reach Us Directly</h3>
                 {[
@@ -84,7 +84,7 @@ export default function ContactPage() {
                 ))}
               </motion.div>
 
-              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}
+              <motion.div initial={{ x: -20 }} animate={{ x: 0 }} transition={{ delay: 0.2 }}
                 className="bg-white border border-obsidian-100 p-8">
                 <div className="flex items-center gap-2 mb-4">
                   <Clock size={16} className="text-gold-500" />
@@ -98,7 +98,7 @@ export default function ContactPage() {
               </motion.div>
 
               <motion.a
-                initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}
+                initial={{ x: -20 }} animate={{ x: 0 }} transition={{ delay: 0.3 }}
                 href={whatsappLink('Hello! I need assistance from Shubham Tour & Travels.')}
                 target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-3 bg-[#25D366] text-white p-5 hover:bg-[#22c55e] transition-colors"
@@ -112,7 +112,7 @@ export default function ContactPage() {
             </div>
 
             {/* Form */}
-            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}
+            <motion.div initial={{ x: 20 }} animate={{ x: 0 }} transition={{ delay: 0.2 }}
               className="lg:col-span-3 bg-white border border-obsidian-100 p-8 md:p-10">
 
               {status === 'success' ? (

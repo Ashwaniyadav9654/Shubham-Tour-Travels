@@ -9,7 +9,7 @@ export default function BlogPage() {
     <div>
       <section className="bg-obsidian-950 py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <motion.div initial={{ y: 20 }} animate={{ y: 0 }}>
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-10 bg-gold-500" />
               <span className="text-gold-400 text-xs tracking-[0.25em] uppercase">Travel Stories</span>

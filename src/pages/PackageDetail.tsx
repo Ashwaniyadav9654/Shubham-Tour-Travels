@@ -30,8 +30,8 @@ export default function PackageDetailPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/30 to-navy/10" />
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 24 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.7 }}
             className="relative px-6 pb-10 pt-28 sm:px-10 md:px-14 md:pb-14"
           >

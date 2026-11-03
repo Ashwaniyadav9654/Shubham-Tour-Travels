@@ -11,8 +11,8 @@ export default function Layout() {
       <Navbar />
       <motion.main
         className="flex-1"
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ y: 8 }}
+        animate={{ y: 0 }}
         transition={{ duration: 0.35, ease: 'easeOut' }}
       >
         <Outlet />

@@ -28,7 +28,7 @@ export default function FleetPage() {
       {/* Hero */}
       <section className="bg-obsidian-950 py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <motion.div initial={{ y: 20 }} animate={{ y: 0 }} transition={{ duration: 0.6 }}>
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-10 bg-gold-500" />
               <span className="text-gold-400 text-xs tracking-[0.25em] uppercase">Our Fleet</span>
@@ -65,8 +65,8 @@ export default function FleetPage() {
           <AnimatePresence mode="wait">
             {(active === 'all' || active === 'maharaja') && (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ y: 20 }}
+                animate={{ y: 0 }}
                 exit={{ opacity: 0 }}
                 className="mb-8"
               >
@@ -181,8 +181,8 @@ function MaharajaFeaturedCard({ vehicle }: { vehicle: Vehicle }) {
 function VehicleCard({ vehicle, index }: { vehicle: Vehicle; index: number }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ y: 30 }}
+      animate={{ y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.06 }}
       className="group bg-white border border-obsidian-100 hover:border-gold-300 transition-all duration-400 overflow-hidden hover-lift"
     >

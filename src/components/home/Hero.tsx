@@ -48,8 +48,8 @@ export default function Hero() {
 
         <div className="relative px-6 pb-8 pt-32 sm:px-10 md:px-14 md:pb-12">
           <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 28 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-3xl"
           >
@@ -78,8 +78,8 @@ export default function Hero() {
           {/* Quick planner */}
           <motion.form
             onSubmit={plan}
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 28 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.9, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
             className="mt-10 grid gap-2 rounded-3xl bg-white p-3 shadow-2xl shadow-navy/20 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_auto]"
           >

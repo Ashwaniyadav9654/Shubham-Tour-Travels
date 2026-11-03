@@ -19,7 +19,7 @@ export default function FleetDetailPage() {
       <section className="bg-obsidian-950 py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div initial={{ opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }}>
+            <motion.div initial={{ x: -24 }} animate={{ x: 0 }}>
               {vehicle.badge && (
                 <div className="bg-gold-500 text-obsidian-950 text-[10px] tracking-widest px-3 py-1 inline-block mb-4 font-semibold">
                   {vehicle.badge}
@@ -47,7 +47,7 @@ export default function FleetDetailPage() {
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}
+            <motion.div initial={{ x: 24 }} animate={{ x: 0 }} transition={{ delay: 0.2 }}
               className="relative overflow-hidden">
               <VehiclePhoto src={vehicle.images[0]} alt={vehicle.name} full={vehicle.showFullPhoto} className="aspect-[4/3]" />
             </motion.div>

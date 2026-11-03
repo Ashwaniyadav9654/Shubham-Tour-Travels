@@ -49,7 +49,7 @@ export default function ToursPage() {
     <div className="bg-mist">
       {/* Header */}
       <section className="mx-auto max-w-7xl px-5 pb-10 pt-16 sm:px-8 md:pt-24">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+        <motion.div initial={{ y: 20 }} animate={{ y: 0 }} transition={{ duration: 0.6 }}>
           <p className="text-sm font-medium text-sea">Holiday packages</p>
           <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold leading-[1.05] text-navy md:text-6xl">
             Trips planned around you, not a brochure.
@@ -103,13 +103,13 @@ export default function ToursPage() {
           </div>
         ) : (
           <motion.div layout className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-            <AnimatePresence mode="popLayout">
+            <AnimatePresence mode="popLayout" initial={false}>
               {filtered.map((pkg) => (
                 <motion.div
                   key={pkg.id}
                   layout
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ y: 16 }}
+                  animate={{ y: 0 }}
                   exit={{ opacity: 0, scale: 0.96 }}
                   transition={{ duration: 0.35 }}
                 >

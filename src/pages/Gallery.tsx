@@ -26,7 +26,7 @@ export default function GalleryPage() {
     <div>
       <section className="bg-obsidian-950 py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <motion.div initial={{ y: 20 }} animate={{ y: 0 }}>
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-10 bg-gold-500" />
               <span className="text-gold-400 text-xs tracking-[0.25em] uppercase">Gallery</span>
@@ -52,7 +52,7 @@ export default function GalleryPage() {
           <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
             {filtered.map((item, i) => (
               <motion.div key={item.src + i}
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.05 }}
+                initial={false} transition={{ delay: i * 0.05 }}
                 className="group cursor-pointer break-inside-avoid relative overflow-hidden"
                 onClick={() => setLightbox(item.src)}>
                 <img src={item.src} alt={item.label}

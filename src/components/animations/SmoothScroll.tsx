@@ -54,7 +54,8 @@ export default function SmoothScroll() {
 
   // On route change: jump to top instantly, then re-measure every trigger.
   useEffect(() => {
-    lenisInstance?.scrollTo(0, { immediate: true })
+    lenisInstance?.start()
+    lenisInstance?.scrollTo(0, { immediate: true, force: true })
     window.scrollTo(0, 0)
     requestAnimationFrame(() => ScrollTrigger.refresh())
   }, [pathname])

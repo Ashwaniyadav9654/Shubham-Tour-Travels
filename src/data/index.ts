@@ -46,7 +46,7 @@ export const vehicles: Vehicle[] = [
       'First Aid Kit',
     ],
     amenities: ['Full AC', 'GPS Tracked', 'Music System', 'Large Boot', 'Professional Driver'],
-    images: ['/images/cars/ac-bus-40.webp'],
+    images: ['/images/cars/ac-bus-40-studio.webp'],
     showFullPhoto: true,
     badge: 'FLEET',
     popular: true,

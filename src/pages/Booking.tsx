@@ -37,6 +37,7 @@ export default function BookingPage() {
   const [form, setForm] = useState(() => ({
     ...emptyForm,
     service: serviceOptions.includes(params.get('service') ?? '') ? params.get('service')! : '',
+    from: params.get('from') ?? '',
     to: params.get('to') ?? '',
     date: params.get('date') ?? '',
     passengers: params.get('passengers') ?? '',

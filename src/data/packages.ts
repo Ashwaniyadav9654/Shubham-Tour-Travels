@@ -1,7 +1,7 @@
 import type { TourPackage, PackageCategory, TravellerType } from '@/types'
 
 const img = (id: string) =>
-  `https://images.unsplash.com/photo-${id}?w=1200&h=900&q=70&fm=webp&fit=crop`
+  `/images/dest/${id}.webp`
 
 export const packageCategories: { id: PackageCategory | 'all'; label: string }[] = [
   { id: 'all', label: 'All' },

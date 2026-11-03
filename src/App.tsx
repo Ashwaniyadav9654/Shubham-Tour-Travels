@@ -14,6 +14,9 @@ import ToursPage from '@/pages/Tours'
 import PackageDetailPage from '@/pages/PackageDetail'
 import TripBuilderPage from '@/pages/TripBuilder'
 import PhotoCreditsPage from '@/pages/PhotoCredits'
+import RoutePage from '@/pages/RoutePage'
+import ServicePage from '@/pages/ServicePage'
+import { RoutesIndexPage, ServicesIndexPage, CollectionPage } from '@/pages/Directory'
 import AirportTransferPage from '@/pages/AirportTransfer'
 import CorporatePage from '@/pages/Corporate'
 import WeddingPage from '@/pages/Wedding'
@@ -63,6 +66,11 @@ export function AppRoutes() {
             <Route path="/customize" element={<TripBuilderPage />} />
             <Route path="/customize/:id" element={<TripBuilderPage />} />
             <Route path="/photo-credits" element={<PhotoCreditsPage />} />
+            <Route path="/routes" element={<RoutesIndexPage />} />
+            <Route path="/routes/:slug" element={<RoutePage />} />
+            <Route path="/services" element={<ServicesIndexPage />} />
+            <Route path="/services/:slug" element={<ServicePage />} />
+            <Route path="/holiday-packages/:slug" element={<CollectionPage />} />
             <Route path="/airport-transfer" element={<AirportTransferPage />} />
             <Route path="/corporate" element={<CorporatePage />} />
             <Route path="/wedding" element={<WeddingPage />} />

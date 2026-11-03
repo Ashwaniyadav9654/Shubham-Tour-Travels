@@ -13,6 +13,7 @@ const footerLinks: { title: string; links: { label: string; href: string }[] }[]
       { label: 'Kedarnath Yatra', href: '/tours/kedarnath-yatra' },
       { label: 'Shimla & Manali', href: '/tours/manali-luxury' },
       { label: 'Build a custom trip', href: '/booking' },
+      { label: 'Routes from Delhi NCR', href: '/routes' },
     ],
   },
   {
@@ -24,6 +25,7 @@ const footerLinks: { title: string; links: { label: string; href: string }[] }[]
       { label: 'Airport transfers', href: '/airport-transfer' },
       { label: 'Corporate travel', href: '/corporate' },
       { label: 'Wedding transport', href: '/wedding' },
+      { label: 'Services by city', href: '/services' },
     ],
   },
   {

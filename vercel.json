@@ -6,26 +6,64 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/reviews", "destination": "/", "permanent": true },
-    { "source": "/services", "destination": "/", "permanent": true },
-    { "source": "/fleet/maharaja", "destination": "/fleet/maharaja-12-tempo", "permanent": true },
-    { "source": "/fleet/innova", "destination": "/fleet/innova-crysta", "permanent": true },
-    { "source": "/tours/dubai-getaway", "destination": "/tours", "permanent": true },
-    { "source": "/tours/bali-escape", "destination": "/tours", "permanent": true },
-    { "source": "/index.html", "destination": "/", "permanent": true }
+    {
+      "source": "/reviews",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fleet/maharaja",
+      "destination": "/fleet/maharaja-12-tempo",
+      "permanent": true
+    },
+    {
+      "source": "/fleet/innova",
+      "destination": "/fleet/innova-crysta",
+      "permanent": true
+    },
+    {
+      "source": "/tours/dubai-getaway",
+      "destination": "/tours",
+      "permanent": true
+    },
+    {
+      "source": "/tours/bali-escape",
+      "destination": "/tours",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/(favicon|apple-touch-icon|icon-maskable|og-image)(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
     },
     {
       "source": "/assets/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/images/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000"
+        }
+      ]
     }
   ]
 }

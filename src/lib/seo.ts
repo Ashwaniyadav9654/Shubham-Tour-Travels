@@ -8,6 +8,9 @@
  */
 import { tourPackages, vehicles, bookingTerms } from '@/data'
 import type { TourPackage, Vehicle } from '@/types'
+import {
+  getRoute, routeFaqs, allRouteSlugs, getService, serviceFaqs, allServiceSlugs, collections, getCollection,
+} from '@/data/seoPages'
 
 export const SITE = 'https://shubhamtourtravels.in'
 export const BRAND = 'Shubham Tour & Travels'
@@ -87,6 +90,14 @@ const STATIC: Record<string, Static> = {
     title: 'Travel Guides & Road Trip Tips from Delhi | Shubham Travels',
     description:
       'Route guides, packing tips and destination advice for family and group road trips from Delhi NCR by Tempo Traveller, cab or bus.',
+  },
+  '/routes': {
+    title: 'Tempo Traveller & Taxi Routes from Delhi NCR | Shubham',
+    description: 'Distance, travel time and the right vehicle from Gurgaon, Delhi, Noida, Faridabad and Ghaziabad to 74 hill stations, pilgrim towns and heritage cities.',
+  },
+  '/services': {
+    title: 'Tempo Traveller, Bus & Cab Services in Delhi NCR | Shubham',
+    description: 'Tempo Traveller, 40-seater bus, Innova, outstation taxi, airport, wedding and corporate cabs in Gurgaon, Delhi, Noida, Faridabad, Ghaziabad and more.',
   },
   '/photo-credits': {
     title: 'Photo Credits | Shubham Tour & Travels',
@@ -245,6 +256,93 @@ export const homeFaqs: { q: string; a: string }[] = [
   },
 ]
 
+function faqLd(faqs: { q: string; a: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  }
+}
+
+function routeSeo(slug: string): PageSeo | undefined {
+  const r = getRoute(slug)
+  if (!r) return undefined
+  const { origin: o, dest: d } = r
+  const path = `/routes/${slug}`
+  const title = fitTitle(
+    `${o.name} to ${d.name} Tempo Traveller & Taxi | Shubham`,
+    `${o.name} to ${d.name} Tempo Traveller | Shubham`,
+    `${o.name} to ${d.name} Taxi | Shubham`,
+  )
+  const description = clip(
+    `${o.name} to ${d.name} by road: ${r.km} km, about ${r.hrsRange[0]}–${r.hrsRange[1]} hrs. Book a cab, Innova, Tempo Traveller or bus with driver. Free quote, 10% advance.`,
+    160,
+  )
+  const image = abs(r.pkg?.image ?? '/images/cars/maharaja-exterior.webp')
+  return {
+    title, description, canonical: SITE + path, image,
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        serviceType: 'Tempo Traveller and taxi hire',
+        name: `${o.name} to ${d.name} Tempo Traveller & taxi`,
+        description,
+        areaServed: [o.name, d.name],
+        provider: { '@id': `${SITE}/#organization` },
+      },
+      faqLd(routeFaqs(r)),
+      breadcrumb([['Home', '/'], ['Routes', '/routes'], [`${o.name} to ${d.name}`, path]]),
+    ],
+  }
+}
+
+function serviceSeo(slug: string): PageSeo | undefined {
+  const s = getService(slug)
+  if (!s) return undefined
+  const path = `/services/${slug}`
+  const name = s.type.title(s.city.name)
+  const title = fitTitle(`${name} | Shubham Travels`, `${name} | Shubham`, name)
+  const description = clip(`${s.type.intro(s.city.name)} Free quote, only 10% advance.`, 160)
+  return {
+    title, description, canonical: SITE + path, image: abs(s.vehicles[0]?.images[0] ?? '/og-image.jpg'),
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        serviceType: s.type.short,
+        name,
+        description,
+        areaServed: s.city.name,
+        provider: { '@id': `${SITE}/#organization` },
+      },
+      faqLd(serviceFaqs(s)),
+      breadcrumb([['Home', '/'], ['Services', '/services'], [name, path]]),
+    ],
+  }
+}
+
+function collectionSeo(slug: string): PageSeo | undefined {
+  const c = getCollection(slug)
+  if (!c) return undefined
+  const path = `/holiday-packages/${slug}`
+  return {
+    title: fitTitle(`${c.title} | Shubham Travels`, `${c.title} | Shubham`, c.title),
+    description: clip(`${c.intro} Free quote, only 10% advance.`, 160),
+    canonical: SITE + path,
+    image: abs(c.packages[0].image),
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: c.title,
+        itemListElement: c.packages.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}/tours/${p.id}`, name: p.title })),
+      },
+      breadcrumb([['Home', '/'], ['Tour Packages', '/tours'], [c.title, path]]),
+    ],
+  }
+}
+
 /* ─── public API ──────────────────────────────────────────────────── */
 
 export function getSeo(pathname: string): PageSeo {
@@ -270,6 +368,13 @@ export function getSeo(pathname: string): PageSeo {
       }
     }
   }
+
+  const rt = path.match(/^\/routes\/([^/]+)$/)
+  if (rt) { const x = routeSeo(rt[1]); if (x) return x }
+  const sv = path.match(/^\/services\/([^/]+)$/)
+  if (sv) { const x = serviceSeo(sv[1]); if (x) return x }
+  const co = path.match(/^\/holiday-packages\/([^/]+)$/)
+  if (co) { const x = collectionSeo(co[1]); if (x) return x }
 
   const fleet = path.match(/^\/fleet\/([^/]+)$/)
   if (fleet) {
@@ -325,6 +430,9 @@ export function allRoutes(): { path: string; index: boolean; priority: number }[
     ...tourPackages.map((p) => ({ path: `/tours/${p.id}`, index: true, priority: 0.8 })),
     ...tourPackages.map((p) => ({ path: `/customize/${p.id}`, index: false, priority: 0 })),
     ...vehicles.map((v) => ({ path: `/fleet/${v.id}`, index: true, priority: 0.7 })),
+    ...allRouteSlugs().map((s) => ({ path: `/routes/${s}`, index: true, priority: 0.6 })),
+    ...allServiceSlugs().map((s) => ({ path: `/services/${s}`, index: true, priority: 0.7 })),
+    ...collections().map((c) => ({ path: `/holiday-packages/${c.slug}`, index: true, priority: 0.7 })),
   ]
 }
 

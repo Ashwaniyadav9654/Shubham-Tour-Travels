@@ -17,7 +17,7 @@ export function imgSet(src: string, widths: number[] = [480, 800, 1200]): { src:
     }
     return { src: at(800), srcSet: widths.map((w) => `${at(w)} ${w}w`).join(', ') }
   }
-  const local = src.match(/^(\/images\/(?:packages|cars)\/.+?)(-800)?\.webp$/)
+  const local = src.match(/^(\/images\/(?:packages|cars|dest)\/.+?)(-800)?\.webp$/)
   if (local) return { src: `${local[1]}-800.webp`, srcSet: `${local[1]}-800.webp 800w, ${local[1]}.webp 1600w` }
   return { src }
 }

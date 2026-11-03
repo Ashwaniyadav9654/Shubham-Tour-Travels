@@ -7,6 +7,8 @@ import { packageInclusions, packageExclusions } from '@/data/packages'
 import { PHONE_HREF, PHONE_NUMBER } from '@/lib/utils'
 import { btn, WhatsAppIcon } from '@/components/site/ui'
 import { imgSet } from '@/lib/img'
+import { routesForPackage } from '@/data/seoPages'
+import { LinkGrid } from '@/components/site/SeoBlocks'
 import { PackageCard, quoteHref, packageWhatsApp } from '@/components/site/PackageCard'
 
 export default function PackageDetailPage() {
@@ -143,6 +145,16 @@ export default function PackageDetailPage() {
           </div>
         </aside>
       </section>
+
+      {routesForPackage(pkg.id).length > 0 && (
+        <section className="mx-auto max-w-7xl px-5 pb-16 sm:px-8">
+          <h2 className="font-display text-2xl font-semibold text-navy">Getting there from Delhi NCR</h2>
+          <LinkGrid
+            cols={3}
+            links={routesForPackage(pkg.id).map((r) => [`${r.origin.name} to ${r.dest.name}`, `/routes/${r.slug}`, `${r.km} km`])}
+          />
+        </section>
+      )}
 
       {related.length > 0 && (
         <section className="bg-white py-20">

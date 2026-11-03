@@ -33,13 +33,13 @@ const offerings = [
   {
     title: 'Holiday Packages',
     text: 'Hill stations, pilgrimages, beaches and international trips.',
-    image: 'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=1200&h=900&q=70&fm=webp&fit=crop',
+    image: '/images/dest/1595815771614-ade9d652a65d.webp',
     to: '/tours',
   },
   {
     title: 'Group Trips',
     text: 'Fixed departures and private groups with one vehicle for everyone.',
-    image: 'https://images.unsplash.com/photo-1609920658906-8223bd289001?w=1200&h=900&q=70&fm=webp&fit=crop',
+    image: '/images/dest/1609920658906-8223bd289001.webp',
     to: '/tours#group-departures',
   },
   {
@@ -51,7 +51,7 @@ const offerings = [
   {
     title: 'Corporate Travel',
     text: 'Monthly accounts, GST billing and coaches for offsites.',
-    image: '/images/cars/ac-bus-40.webp',
+    image: '/images/cars/ac-bus-40-studio.webp',
     to: '/corporate',
   },
   {
@@ -197,8 +197,8 @@ export function CustomTripBanner() {
     <section className="px-3 sm:px-5">
       <Reveal className="relative overflow-hidden rounded-[2rem]">
         <img
-          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&h=900&q=65&fm=webp&fit=crop"
-          srcSet="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&h=450&q=65&fm=webp&fit=crop 800w, https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&h=900&q=65&fm=webp&fit=crop 1600w"
+          src="/images/dest/1464822759023-fed622ff2c3b-wide.webp"
+          srcSet="/images/dest/1464822759023-fed622ff2c3b-wide-800.webp 800w, /images/dest/1464822759023-fed622ff2c3b-wide.webp 1600w"
           sizes="100vw"
           width={1600}
           height={900}

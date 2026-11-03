@@ -6,6 +6,7 @@ import { tourPackages, bookingTerms } from '@/data'
 import { packageInclusions, packageExclusions } from '@/data/packages'
 import { PHONE_HREF, PHONE_NUMBER } from '@/lib/utils'
 import { btn, WhatsAppIcon } from '@/components/site/ui'
+import { imgSet } from '@/lib/img'
 import { PackageCard, quoteHref, packageWhatsApp } from '@/components/site/PackageCard'
 
 export default function PackageDetailPage() {
@@ -21,7 +22,8 @@ export default function PackageDetailPage() {
       <section className="px-3 pt-3 sm:px-5 sm:pt-5">
         <div className="relative flex min-h-[min(60vh,560px)] flex-col justify-end overflow-hidden rounded-[2rem]">
           <img
-            src={pkg.image}
+            {...imgSet(pkg.image)}
+            sizes="100vw"
             width={1600}
             height={900}
             fetchPriority="high"

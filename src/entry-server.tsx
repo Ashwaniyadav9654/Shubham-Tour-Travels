@@ -8,6 +8,7 @@ import { StaticRouter } from 'react-router-dom/server'
 import { AppRoutes } from './App'
 
 export { getSeo, allRoutes } from './lib/seo'
+export { imgSet } from './lib/img'
 
 export function render(url: string): string {
   return renderToString(

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ChevronDown, ChevronRight } from 'lucide-react'
+import { ChevronDown, ChevronRight, Info } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 /** Breadcrumb trail (structured data for it is added in lib/seo). */
@@ -55,5 +55,24 @@ export function LinkGrid({ links, cols = 2 }: { links: [string, string, string?]
         </li>
       ))}
     </ul>
+  )
+}
+
+/**
+ * Shown on route, service and bus pages. Other bus companies with similar
+ * names sell seats on redBus and similar apps; their passengers were finding
+ * our number through these pages.
+ */
+export function PrivateHireNotice({ className }: { className?: string }) {
+  return (
+    <div className={cn('flex gap-3 rounded-2xl border border-sun/40 bg-sun/10 p-4 text-sm text-navy', className)} role="note">
+      <Info size={18} className="mt-0.5 shrink-0 text-sun-ink" />
+      <p>
+        <span className="font-semibold">Private hire only.</span> We rent out the whole vehicle with a driver for your own
+        group. We do not sell individual bus seats, run scheduled buses, or take bookings through redBus or other
+        ticketing apps, and we are not connected with other operators named &ldquo;Shubham Travels&rdquo;. If you bought a
+        seat ticket online, please contact the bus operator printed on your ticket.
+      </p>
+    </div>
   )
 }

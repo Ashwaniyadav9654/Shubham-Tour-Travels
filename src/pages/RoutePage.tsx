@@ -9,7 +9,7 @@ import { btn, WhatsAppIcon } from '@/components/site/ui'
 import { PackageCard } from '@/components/site/PackageCard'
 import VehiclePhoto from '@/components/site/VehiclePhoto'
 import { ContactBand } from '@/components/home/HomeSections'
-import { FaqList, Crumbs, LinkGrid } from '@/components/site/SeoBlocks'
+import { FaqList, Crumbs, LinkGrid, PrivateHireNotice } from '@/components/site/SeoBlocks'
 
 const shell = 'mx-auto w-full max-w-7xl px-5 sm:px-8'
 
@@ -28,12 +28,13 @@ export default function RoutePage() {
         <Crumbs items={[['Home', '/'], ['Routes', '/routes'], [`${o.name} to ${d.name}`, `/routes/${slug}`]]} />
         <p className="mt-6 text-sm font-medium text-sea">{d.state} · from {o.name}</p>
         <h1 className="mt-2 max-w-4xl font-display text-3xl font-semibold leading-tight text-navy md:text-5xl">
-          {o.name} to {d.name} Tempo Traveller, Taxi &amp; Bus
+          {o.name} to {d.name} Tempo Traveller &amp; Cab Hire
         </h1>
         <p className="mt-4 max-w-3xl text-lg text-navy-soft">
-          Book a cab, Innova, Tempo Traveller or 40-seater bus from {o.name} to {d.name} with a professional driver.
+          Hire a private cab, Innova or Tempo Traveller with driver for your own group from {o.name} to {d.name}.
           {' '}{d.name} is about {r.km} km by road, roughly {r.hrsRange[0]}–{r.hrsRange[1]} hours including breaks.
         </p>
+        <PrivateHireNotice className="mt-6 max-w-3xl" />
         <div className="mt-6 flex flex-wrap gap-3">
           <Link to={quote} className={btn.primary}>Get a free quote <ArrowRight size={16} /></Link>
           <a href={whatsappBookingLink(`${o.name} to ${d.name}`, `${r.km} km`)} target="_blank" rel="noopener noreferrer" className={btn.outline}>
@@ -64,8 +65,8 @@ export default function RoutePage() {
       <section className="bg-white py-14 md:py-20">
         <div className={shell}>
           <h2 className="font-display text-2xl font-semibold text-navy md:text-3xl">Choose a vehicle for your group</h2>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {vehicleOptions().map((g) => {
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {vehicleOptions().filter((g) => !g.vehicles.some((v) => v.id === 'ac-bus-40')).map((g) => {
               const v = g.vehicles[0]
               return (
                 <div key={g.group} className="flex flex-col">

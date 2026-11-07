@@ -89,7 +89,7 @@ const STATIC: Record<string, Static> = {
   '/blog': {
     title: 'Travel Guides & Road Trip Tips from Delhi | Shubham Travels',
     description:
-      'Route guides, packing tips and destination advice for family and group road trips from Delhi NCR by Tempo Traveller, cab or bus.',
+      'Route guides, packing tips and destination advice for family and group road trips from Delhi NCR by private Tempo Traveller or cab.',
   },
   '/routes': {
     title: 'Tempo Traveller & Taxi Routes from Delhi NCR | Shubham',
@@ -275,7 +275,7 @@ function routeSeo(slug: string): PageSeo | undefined {
     `${o.name} to ${d.name} Taxi | Shubham`,
   )
   const description = clip(
-    `${o.name} to ${d.name} by road: ${r.km} km, about ${r.hrsRange[0]}–${r.hrsRange[1]} hrs. Book a cab, Innova, Tempo Traveller or bus with driver. Free quote, 10% advance.`,
+    `${o.name} to ${d.name} by road: ${r.km} km, about ${r.hrsRange[0]}–${r.hrsRange[1]} hrs. Private cab, Innova or Tempo Traveller with driver for your group. Free quote.`,
     160,
   )
   const image = abs(r.pkg?.image ?? '/images/cars/maharaja-exterior.webp')

@@ -8,7 +8,7 @@ import { whatsappBookingLink } from '@/lib/utils'
 import { btn, WhatsAppIcon } from '@/components/site/ui'
 import VehiclePhoto from '@/components/site/VehiclePhoto'
 import { ContactBand } from '@/components/home/HomeSections'
-import { FaqList, Crumbs, LinkGrid } from '@/components/site/SeoBlocks'
+import { FaqList, Crumbs, LinkGrid, PrivateHireNotice } from '@/components/site/SeoBlocks'
 
 const shell = 'mx-auto w-full max-w-7xl px-5 sm:px-8'
 
@@ -29,6 +29,7 @@ export default function ServicePage() {
         <p className="mt-6 text-sm font-medium text-sea">{c.name}, Delhi NCR</p>
         <h1 className="mt-2 max-w-4xl font-display text-3xl font-semibold leading-tight text-navy md:text-5xl">{title}</h1>
         <p className="mt-4 max-w-3xl text-lg text-navy-soft">{t.intro(c.name)}</p>
+        <PrivateHireNotice className="mt-6 max-w-3xl" />
         <div className="mt-6 flex flex-wrap gap-3">
           <Link to={quote} className={btn.primary}>Get a free quote <ArrowRight size={16} /></Link>
           <a href={whatsappBookingLink(title)} target="_blank" rel="noopener noreferrer" className={btn.outline}>

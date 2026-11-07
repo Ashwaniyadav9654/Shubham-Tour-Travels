@@ -120,7 +120,7 @@ export function routeFaqs(r: RouteInfo) {
     },
     {
       q: `Which vehicle should we book for ${o.name} to ${d.name}?`,
-      a: 'Up to 4 people travel comfortably in a sedan, 5–7 in an Ertiga, Innova Crysta or Hycross, 8–14 in the 12+2 Maharaja Tempo Traveller, and larger groups in the 40-seater AC bus.',
+      a: 'Up to 4 people travel comfortably in a sedan, 5–7 in an Ertiga, Innova Crysta or Hycross, and 8–14 in the 12+2 Maharaja Tempo Traveller. Bigger groups can hire our whole 40-seater bus; we do not sell individual seats.',
     },
     {
       q: `Can you plan a full ${d.name} trip, not just the transport?`,
@@ -166,9 +166,9 @@ export const serviceTypes: ServiceType[] = [
   },
   {
     slug: 'bus-on-rent',
-    title: (c) => `40 Seater Bus on Rent in ${c}`,
-    short: 'Bus hire',
-    intro: (c) => `Book a 40-seater AC bus in ${c} for school trips, corporate events, weddings and large pilgrim groups, driven by experienced highway drivers.`,
+    title: (c) => `40 Seater Bus Hire in ${c} (Full Charter)`,
+    short: 'Full bus hire',
+    intro: (c) => `Hire our whole 40-seater AC bus with driver in ${c} for your own group: school trips, corporate events, weddings and pilgrim groups. We do not sell individual seats or run scheduled routes.`,
     vehicleIds: ['ac-bus-40'],
     bookingService: 'Luxury Group Tour',
   },

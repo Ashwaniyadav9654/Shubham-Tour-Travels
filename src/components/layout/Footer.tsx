@@ -118,7 +118,10 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/50 md:flex-row">
-          <p>© {new Date().getFullYear()} Shubham Tour &amp; Travels. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} Shubham Tour &amp; Travels. Private vehicle hire only: we do not sell bus seats
+            or take redBus bookings.
+          </p>
           <p>
             GST registered · 24×7 support · GPS-tracked fleet ·{' '}
             <Link to="/photo-credits" className="hover:text-white">Photo credits</Link>

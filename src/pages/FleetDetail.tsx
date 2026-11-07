@@ -6,6 +6,7 @@ import { vehicles } from '@/data'
 import { whatsappBookingLink, PHONE_HREF } from '@/lib/utils'
 import CTASection from '@/components/sections/CTASection'
 import VehiclePhoto from '@/components/site/VehiclePhoto'
+import { PrivateHireNotice } from '@/components/site/SeoBlocks'
 
 export default function FleetDetailPage() {
   const { slug } = useParams<{ slug: string }>()
@@ -38,6 +39,7 @@ export default function FleetDetailPage() {
                 </div>
               </div>
 
+              {vehicle.id === 'ac-bus-40' && <PrivateHireNotice className="mb-6 bg-white" />}
               <div className="flex flex-wrap gap-3">
                 <a href={whatsappBookingLink(vehicle.name, `${vehicle.seats} seats`)}
                   target="_blank" rel="noopener noreferrer" className="btn-gold text-xs">

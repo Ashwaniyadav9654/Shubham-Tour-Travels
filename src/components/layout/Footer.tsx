@@ -26,6 +26,7 @@ const footerLinks: { title: string; links: { label: string; href: string }[] }[]
       { label: 'Corporate travel', href: '/corporate' },
       { label: 'Wedding transport', href: '/wedding' },
       { label: 'Services by city', href: '/services' },
+      { label: 'Travel agency in Gurgaon', href: '/services/tour-and-travels-in-gurgaon' },
     ],
   },
   {

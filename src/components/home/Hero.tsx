@@ -54,7 +54,7 @@ export default function Hero() {
             className="max-w-3xl"
           >
             <h1 className="inline-block rounded-full bg-white/15 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur-md sm:text-sm">
-              Tempo Traveller Hire &amp; Tour Packages in Gurgaon, Delhi NCR
+              Tour &amp; Travel Agency in Gurgaon: Tour Packages &amp; Tempo Traveller Hire
             </h1>
             <p className="mt-6 font-display font-semibold text-white text-[2.75rem] leading-[1.02] sm:text-6xl md:text-7xl tracking-tight">
               Every journey,

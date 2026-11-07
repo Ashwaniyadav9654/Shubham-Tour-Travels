@@ -9,6 +9,8 @@ import { btn, WhatsAppIcon } from '@/components/site/ui'
 import VehiclePhoto from '@/components/site/VehiclePhoto'
 import { ContactBand } from '@/components/home/HomeSections'
 import { FaqList, Crumbs, LinkGrid, PrivateHireNotice } from '@/components/site/SeoBlocks'
+import { PackageCard } from '@/components/site/PackageCard'
+import { tourPackages } from '@/data'
 
 const shell = 'mx-auto w-full max-w-7xl px-5 sm:px-8'
 
@@ -27,7 +29,9 @@ export default function ServicePage() {
       <section className={`${shell} pb-12 pt-10 md:pt-16`}>
         <Crumbs items={[['Home', '/'], ['Services', '/services'], [title, `/services/${slug}`]]} />
         <p className="mt-6 text-sm font-medium text-sea">{c.name}, Delhi NCR</p>
-        <h1 className="mt-2 max-w-4xl font-display text-3xl font-semibold leading-tight text-navy md:text-5xl">{title}</h1>
+        <h1 className="mt-2 max-w-4xl font-display text-3xl font-semibold leading-tight text-navy md:text-5xl">
+          {t.slug === 'tour-and-travels' ? `Tour and Travels in ${c.name}: Travel Agency for Packages & Vehicle Hire` : title}
+        </h1>
         <p className="mt-4 max-w-3xl text-lg text-navy-soft">{t.intro(c.name)}</p>
         <PrivateHireNotice className="mt-6 max-w-3xl" />
         <div className="mt-6 flex flex-wrap gap-3">
@@ -69,6 +73,18 @@ export default function ServicePage() {
           </div>
         </div>
       </section>
+
+      {t.slug === 'tour-and-travels' && (
+        <section className="bg-mist py-14 md:py-20">
+          <div className={shell}>
+            <h2 className="font-display text-2xl font-semibold text-navy md:text-3xl">Popular tour packages from {c.name}</h2>
+            <div className="mt-8 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+              {tourPackages.filter((p) => p.popular).slice(0, 6).map((p) => <PackageCard key={p.id} pkg={p} />)}
+            </div>
+            <Link to="/tours" className={`${btn.outline} mt-10`}>See all {tourPackages.length} packages <ArrowRight size={14} /></Link>
+          </div>
+        </section>
+      )}
 
       {routes.length > 0 && (
         <section className="py-14 md:py-20">

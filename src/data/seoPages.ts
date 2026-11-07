@@ -157,6 +157,15 @@ export interface ServiceType {
 
 export const serviceTypes: ServiceType[] = [
   {
+    slug: 'tour-and-travels',
+    title: (c) => `Tour and Travels in ${c}`,
+    short: 'Tour and travels',
+    intro: (c) =>
+      `Shubham Tour & Travels is a full-service travel agency for ${c}: holiday tour packages across India, Nepal and Thailand, Tempo Traveller and bus hire, outstation cabs, airport transfers, and wedding and corporate travel, all run with our own vehicles and drivers.`,
+    vehicleIds: ['maharaja-12-tempo', 'innova-hycross', 'innova-crysta', 'ac-bus-40'],
+    bookingService: 'Luxury Group Tour',
+  },
+  {
     slug: 'tempo-traveller-on-rent',
     title: (c) => `Tempo Traveller on Rent in ${c}`,
     short: 'Tempo Traveller hire',
@@ -242,6 +251,30 @@ export function popularRoutesFrom(originSlug: string, n = 12) {
 
 export function serviceFaqs(s: NonNullable<ReturnType<typeof getService>>) {
   const c = s.city.name
+  if (s.type.slug === 'tour-and-travels') {
+    return [
+      {
+        q: `Which is a good tour and travels agency in ${c}?`,
+        a: `Shubham Tour & Travels serves ${c} and all of Delhi NCR from our base in Gurugram, with our own Tempo Travellers, buses and cars, ${tourPackages.length} customisable holiday packages, and 24×7 phone and WhatsApp support.`,
+      },
+      {
+        q: `What services does your travel agency offer in ${c}?`,
+        a: 'Holiday tour packages, Char Dham and pilgrimage yatras, Tempo Traveller and 40-seater bus hire, outstation and airport cabs, wedding transport and corporate travel.',
+      },
+      {
+        q: `Do you pick up from my area in ${c}?`,
+        a: `Yes. We pick up across ${c}, including ${s.city.areas.join(', ')}.`,
+      },
+      {
+        q: 'Do you sell bus seats or take redBus bookings?',
+        a: 'No. We are a private hire and tour agency: we rent the whole vehicle for your group and plan complete trips. We do not sell individual seats or run scheduled buses.',
+      },
+      {
+        q: 'How do I book a tour or vehicle?',
+        a: 'Call or WhatsApp +91 85958 20300, or send an enquiry on the website. We send a written quote; only 10% advance confirms the booking.',
+      },
+    ]
+  }
   const faqs = [
     {
       q: `Do you provide ${s.type.short.toLowerCase()} anywhere in ${c}?`,

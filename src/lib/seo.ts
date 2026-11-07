@@ -32,9 +32,9 @@ type Static = { title: string; description: string; noindex?: boolean }
 /** Titles stay within ~60 characters and descriptions within ~160 so Google shows them whole. */
 const STATIC: Record<string, Static> = {
   '/': {
-    title: 'Tempo Traveller & Tour Packages in Gurgaon | Shubham Travels',
+    title: 'Shubham Tour & Travels | Tour & Travel Agency in Gurgaon',
     description:
-      'Book Tempo Traveller hire, cabs and holiday tour packages from Gurgaon & Delhi NCR. 35 customisable trips, 3–5 star hotels, own fleet, only 10% advance.',
+      'Shubham Tour & Travels is a tour and travel agency in Gurgaon for holiday packages, Tempo Traveller, bus and cab hire. Own fleet, 24×7 support, 10% advance.',
   },
   '/tours': {
     title: 'Holiday Tour Packages from Delhi & Gurgaon | Shubham Travels',
@@ -302,7 +302,9 @@ function serviceSeo(slug: string): PageSeo | undefined {
   if (!s) return undefined
   const path = `/services/${slug}`
   const name = s.type.title(s.city.name)
-  const title = fitTitle(`${name} | Shubham Travels`, `${name} | Shubham`, name)
+  const title = s.type.slug === 'tour-and-travels'
+    ? fitTitle(`Tour and Travels in ${s.city.name} | Travel Agency | Shubham`, `Tour and Travels in ${s.city.name} | Travel Agency`, `Tour & Travels ${s.city.name} | Travel Agency`)
+    : fitTitle(`${name} | Shubham Travels`, `${name} | Shubham`, name)
   const description = clip(`${s.type.intro(s.city.name)} Free quote, only 10% advance.`, 160)
   return {
     title, description, canonical: SITE + path, image: abs(s.vehicles[0]?.images[0] ?? '/og-image.jpg'),
